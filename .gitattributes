@@ -1,0 +1,3 @@
+# the rule files are checked against sha256 sums: never convert their line endings
+data/** -text
+test/data/** -text
