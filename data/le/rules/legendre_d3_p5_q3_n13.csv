@@ -1,0 +1,47 @@
+# Designed quadrature rule — Legendre / uniform (Le) family
+# family: legendre
+# weight function: uniform on the unit cube, density 1 on [0,1]^d (Lebesgue measure, the unit cube frame of the bank)
+# normalization: total mass 1, so the weights sum to 1
+# verified: sum of weights = 1   (|sum w - 1| = 0.000e+00)
+# domain: [0,1]^d
+# d: 3   p: 5   q: 3   n: 13
+# exactness: all monomials of total degree <= p
+# verified max relative monomial error (BigFloat, 192 bits): 2.363498e-17
+# relative error definition: |sum_s w_s prod_k x_sk^a_k - E[x^a]| / max(sum_s |w_s| prod_k |x_sk|^a_k, 1)
+# project relative gate: 1.0e-11 (passed)
+# min weight: 0.06252677758474974   max weight: 0.21052631578947367   (all weights positive)
+# node range: [0.054214040427892303, 0.94578595957210765] (all nodes strictly inside the cube)
+# source file: rules/legendre_d3_p5_n13.csv   (local tree: sync)
+# source sha256: 3c3adf7309286158b54d64ccb4fb9f50dadb04ed33acf89659677da01e2b64dc
+# precision shipped: Float64 round-trip (17 significant digits)
+# credit: ours
+# credit note: our own tooling produced this rule — a cluster harvest ledger recorded this file as new to the bank — OSPool harvest ledger (cluster/finds_ospool.tsv), recorded new to the bank at the pull of 2026-09-02 19:12 UTC. There is no entry in rules/literature.tsv and no node-level match against the published rules held locally, so this is our work
+# credit evidence grade: cluster-find-ledger
+# credit evidence: a cluster harvest ledger recorded this file as new to the bank — OSPool harvest ledger (cluster/finds_ospool.tsv), recorded new to the bank at the pull of 2026-09-02 19:12 UTC
+# lineage parent: unrecorded
+# lineage chain root: unrecorded
+# credit vocabulary: ours | derived-from:<rule> (<paper>) | transcribed:<source> | same-rule:<source> | unrecorded
+# tie: unestablished:A. H. Stroud, Approximate Calculation of Multiple Integrals, Prentice-Hall, 1971.
+# tie note: Diallo and Worku, arXiv:2601.14488: published count(s) 14 for this cell, ours is 13; per the literature survey (publish/shared/literature_best.tsv, source key stroud1971): our n=13 equals the best published count; UNESTABLISHED - the repo does not record a node-for-node comparison for this cell. Settled by comparing our banked rule with the published coordinates.
+# tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
+# extended precision: twin-shipped
+# Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
+# extended-precision twin: rules_extended/legendre_d3_p5_q3_n13.mp.csv (80 digits, verified rel err 4.866200e-76)
+# Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# extended-precision source sha256: a5fdb873617b012f181fe558804ec2fff531973dde492aab5dfed642899f8929
+# generated: 2026-09-19T14:47:24 by make_publish.jl
+# columns: x1,x2,x3,w
+x1,x2,x3,w
+0.648892526759575,0.9457859595721076,0.8094714209586905,0.06427729706368637
+0.35110747324042496,0.0542140404278923,0.19052857904130943,0.06427729706368637
+0.84133393093916,0.2944943717513308,0.1026018985772489,0.07328997991494013
+0.15866606906083996,0.7055056282486692,0.8973981014227511,0.07328997991494013
+0.060643345799666216,0.181261082622986,0.6484516743788498,0.06526146772338243
+0.9393566542003338,0.818738917377014,0.35154832562115024,0.06526146772338243
+0.5484313578145973,0.8569757200206293,0.06769292677235265,0.06252677758474974
+0.45156864218540266,0.14302427997937078,0.9323070732276474,0.06252677758474974
+0.5,0.5,0.5,0.21052631578947367
+0.8960906268905078,0.5263384294751767,0.8988548220705529,0.06360017394026884
+0.10390937310949223,0.4736615705248232,0.10114517792944715,0.06360017394026884
+0.13051637933685054,0.9118109807423024,0.3972369868659956,0.06578114587823565
+0.8694836206631494,0.08818901925769758,0.6027630131340044,0.06578114587823565

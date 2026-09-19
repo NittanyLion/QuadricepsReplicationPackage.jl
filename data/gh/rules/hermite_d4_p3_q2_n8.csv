@@ -1,0 +1,42 @@
+# Designed quadrature rule — Gauss–Hermite (GH) family
+# family: hermite
+# weight function: standard normal N(0, I_d), density (2*pi)^(-d/2) * exp(-|x|^2 / 2) on R^d
+# normalization: probabilists' normalization: total mass 1, so the weights sum to 1
+# verified: sum of weights = 1   (|sum w - 1| = 2.776e-17)
+# domain: R^d
+# d: 4   p: 3   q: 2   n: 8
+# exactness: all monomials of total degree <= p
+# verified max relative monomial error (BigFloat, 192 bits): 7.699037e-17
+# relative error definition: |sum_s w_s prod_k x_sk^a_k - E[x^a]| / max(sum_s |w_s| prod_k |x_sk|^a_k, 1)
+# project relative gate: 1.0e-11 (passed)
+# min weight: 0.11785216063326713   max weight: 0.13067044269995381   (all weights positive)
+# node range: [-1.8859631813722433, 1.8859631813722433]   max |node| = 1.8859631813722433
+# source file: rules/hermite_d4_p3_n8.csv   (local tree: sync)
+# source sha256: b6955fad6c556e1b9c01b23616b9ff6230d949d7d3ac24e8af244eaaf05d8c67
+# precision shipped: Float64 round-trip (17 significant digits)
+# credit: unrecorded
+# credit note: no entry in rules/literature.tsv or rules/lineage/; the per-rule lineage ledger only starts 2026-09-10, so this rule's origin is genuinely unrecorded. No evidence for this cell in any source consulted either: no worker log naming the file, no per-host provenance index naming it (comms/provenance/, which is how the office desktop and the laptop report their own logs), no lineage entry, no cluster harvest ledger (OSPool and Roar finds ARE recorded there), no downgrade entry and no sidecar reaching this count. So this deposit does not show who made it, in either direction
+# credit evidence grade: none
+# credit evidence: no sidecar, worker-log or lineage evidence in either local tree
+# lineage parent: unrecorded
+# lineage chain root: unrecorded
+# credit vocabulary: ours | derived-from:<rule> (<paper>) | transcribed:<source> | same-rule:<source> | unrecorded
+# tie: distinct:R. Cools, An encyclopaedia of cubature formulas, J. Complexity 19 (2003) 445-453; online at nines.cs.kuleuven.be/ecf. Overview tables last modified 2002.
+# tie note: Stroud E_n^{r^2} rules (Burkardt's sources, litcheck/stroud_m/): published count(s) 22, 24, 31, 49, 65, 96 for this cell, ours is 8; Van Zandt, Efficient cubature rules, ETNA 51 (2019) 219-239 (arXiv:1712.07309v3): published count(s) 16 for this cell, ours is 8; per the literature survey (publish/shared/literature_best.tsv, source key ecf): our n=8 equals the best published count; DISTINCT RULE at the same count - settled 2026-09-11 by compare_rules.jl against Stroud's E_n^{r^2} 3-1 (order 2N = 8 at N=4): best node displacement 1.4e+00 over B_4, weight-multiset gap 7.1e-03, isometry-invariant distance-multiset gap … — the ECF tabulates counts only, so this settles distinctness from the classical rule of that count, not identity against the ECF entry itself
+# tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
+# extended precision: twin-shipped
+# Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
+# extended-precision twin: rules_extended/hermite_d4_p3_q2_n8.mp.csv (40 digits, verified rel err 5.471150e-40)
+# Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# extended-precision source sha256: dfeedf8aac8a6b6ba443a507adca41af704a064396a1882f28c75c751539040e
+# generated: 2026-09-19T14:44:26 by make_publish.jl
+# columns: x1,x2,x3,x4,w
+x1,x2,x3,x4,w
+0.4489819210072863,-1.847982941137708,0.07877706532273349,0.7872560254561848,0.11785216063326713
+-0.4489819210072863,1.847982941137708,-0.07877706532273349,-0.7872560254561848,0.11785216063326713
+-1.1196885344531284,0.3125522278554551,-0.6415920967978972,1.4364498973314006,0.13067044269995381
+1.1196885344531284,-0.3125522278554551,0.6415920967978972,-1.4364498973314006,0.13067044269995381
+1.536778178564208,0.7855210402471046,-0.10884498879095707,0.9783581546464316,0.12665402605874498
+-1.536778178564208,-0.7855210402471046,0.10884498879095707,-0.9783581546464316,0.12665402605874498
+-0.32646699398584283,0.23018834627649054,1.8859631813722433,0.5378063258294169,0.12482337060803408
+0.32646699398584283,-0.23018834627649054,-1.8859631813722433,-0.5378063258294169,0.12482337060803408

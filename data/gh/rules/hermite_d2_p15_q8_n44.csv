@@ -1,0 +1,78 @@
+# Designed quadrature rule — Gauss–Hermite (GH) family
+# family: hermite
+# weight function: standard normal N(0, I_d), density (2*pi)^(-d/2) * exp(-|x|^2 / 2) on R^d
+# normalization: probabilists' normalization: total mass 1, so the weights sum to 1
+# verified: sum of weights = 1   (|sum w - 1| = 4.736e-17)
+# domain: R^d
+# d: 2   p: 15   q: 8   n: 44
+# exactness: all monomials of total degree <= p
+# verified max relative monomial error (BigFloat, 192 bits): 6.526680e-16
+# relative error definition: |sum_s w_s prod_k x_sk^a_k - E[x^a]| / max(sum_s |w_s| prod_k |x_sk|^a_k, 1)
+# project relative gate: 1.0e-11 (passed)
+# min weight: 4.7021433793174927e-06   max weight: 0.14725045166659606   (all weights positive)
+# node range: [-4.2608702210367113, 4.2608702210367113]   max |node| = 4.2608702210367113
+# source file: rules/hermite_d2_p15_n44.csv   (local tree: sync)
+# source sha256: 5d1d2f304fd3919e536a78b309a7b16449cdca5f67c4fdc196310c9aa7871d9c
+# precision shipped: Float64 round-trip (17 significant digits)
+# credit: unrecorded
+# credit note: no entry in rules/literature.tsv or rules/lineage/; the per-rule lineage ledger only starts 2026-09-10, so this rule's origin is genuinely unrecorded. No evidence for this cell in any source consulted either: no worker log naming the file, no per-host provenance index naming it (comms/provenance/, which is how the office desktop and the laptop report their own logs), no lineage entry, no cluster harvest ledger (OSPool and Roar finds ARE recorded there), no downgrade entry and no sidecar reaching this count. So this deposit does not show who made it, in either direction
+# credit evidence grade: none
+# credit evidence: no sidecar, worker-log or lineage evidence in either local tree
+# lineage parent: unrecorded
+# lineage chain root: unrecorded
+# credit vocabulary: ours | derived-from:<rule> (<paper>) | transcribed:<source> | same-rule:<source> | unrecorded
+# tie: unestablished:R. Cools, An encyclopaedia of cubature formulas, J. Complexity 19 (2003) 445-453; online at nines.cs.kuleuven.be/ecf. Overview tables last modified 2002.
+# tie note: per the literature survey (publish/shared/literature_best.tsv, source key ecf): our n=44 equals the best published count; UNESTABLISHED - the ECF tabulates counts only and its coordinate files are access-restricted, so the two rules have never been compared. Two further routes were swept on 2026-09-11 and neither reaches this cell: Van Zandt's own listings …
+# tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
+# extended precision: twin-shipped
+# Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
+# extended-precision twin: rules_extended/hermite_d2_p15_q8_n44.mp.csv (40 digits, verified rel err 9.547265e-40)
+# Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# extended-precision source sha256: 94fbbee160217ab086e03d2d4398900d1f116ae5936dd7103d63bad40b37715f
+# generated: 2026-09-19T14:44:20 by make_publish.jl
+# columns: x1,x2,w
+x1,x2,w
+-2.860436453281194,1.6380118574771658,0.001275290172937947
+2.860436453281194,-1.6380118574771658,0.001275290172937947
+-4.1490767390042445,-0.8451843143563373,5.376891755173835e-5
+4.1490767390042445,0.8451843143563373,5.376891755173835e-5
+-2.910969923365312,0.1673368561121028,0.003927461541690938
+2.910969923365312,-0.1673368561121028,0.003927461541690938
+-1.6311649000193622,2.208031913160226,0.005399225359327986
+1.6311649000193622,-2.208031913160226,0.005399225359327986
+1.6571060578802714,0.36341638135125554,0.05231910770832798
+-1.6571060578802714,-0.36341638135125554,0.05231910770832798
+2.6776578689815573,1.196831548546601,0.0036708273409010303
+-2.6776578689815573,-1.196831548546601,0.0036708273409010303
+-1.7829565665046567,0.8727059731561955,0.031194574917608978
+1.7829565665046567,-0.8727059731561955,0.031194574917608978
+1.2877903535408846,-4.2525722228553295,2.0822990775876846e-5
+-1.2877903535408846,4.2525722228553295,2.0822990775876846e-5
+-0.39033199333681273,-0.732576135354921,0.14032187793271372
+0.39033199333681273,0.732576135354921,0.14032187793271372
+4.24467839758098,-0.891203528394288,3.5030057168398476e-5
+-4.24467839758098,0.891203528394288,3.5030057168398476e-5
+-1.314666802825829,-1.5092307288266043,0.028674712141218937
+1.314666802825829,1.5092307288266043,0.028674712141218937
+3.9110770870694584,-2.816166664075644,4.702143379317493e-6
+-3.9110770870694584,2.816166664075644,4.702143379317493e-6
+-0.8797917694567111,-2.924035316914784,0.0024467579245021267
+0.8797917694567111,2.924035316914784,0.0024467579245021267
+-3.5766967895275115,-2.52703098367277,3.0370863781505573e-5
+3.5766967895275115,2.52703098367277,3.0370863781505573e-5
+2.1977458492233173,3.9227358533847143,1.899859007501552e-5
+-2.1977458492233173,-3.9227358533847143,1.899859007501552e-5
+2.362623129317657,-3.251193399026261,0.00010300312293260256
+-2.362623129317657,3.251193399026261,0.00010300312293260256
+-0.5725122708162446,2.9666932372232653,0.0029179117799925172
+0.5725122708162446,-2.9666932372232653,0.0029179117799925172
+-0.7121381500790593,1.488358281528053,0.05015574852596105
+0.7121381500790593,-1.488358281528053,0.05015574852596105
+0.40815668607526745,4.260870221036711,4.278724598050079e-5
+-0.40815668607526745,-4.260870221036711,4.278724598050079e-5
+-0.6532116909595315,0.33735602883796095,0.14725045166659606
+0.6532116909595315,-0.33735602883796095,0.14725045166659606
+2.091661727856185,2.4295575934564018,0.0014818657319366217
+-2.091661727856185,-2.4295575934564018,0.0014818657319366217
+-0.22897476637929232,-1.9373798384695464,0.028654703324639166
+0.22897476637929232,1.9373798384695464,0.028654703324639166

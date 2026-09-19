@@ -1,0 +1,51 @@
+# Designed quadrature rule — Legendre / uniform (Le) family
+# family: legendre
+# weight function: uniform on the unit cube, density 1 on [0,1]^d (Lebesgue measure, the unit cube frame of the bank)
+# normalization: total mass 1, so the weights sum to 1
+# verified: sum of weights = 1   (|sum w - 1| = 2.776e-17)
+# domain: [0,1]^d
+# d: 2   p: 9   q: 5   n: 17
+# exactness: all monomials of total degree <= p
+# verified max relative monomial error (BigFloat, 192 bits): 2.775558e-17
+# relative error definition: |sum_s w_s prod_k x_sk^a_k - E[x^a]| / max(sum_s |w_s| prod_k |x_sk|^a_k, 1)
+# project relative gate: 1.0e-11 (passed)
+# min weight: 0.022219844542549678   max weight: 0.13168724279835392   (all weights positive)
+# node range: [0.015575016819011139, 0.98442498318098881] (all nodes strictly inside the cube)
+# source file: rules/legendre_d2_p9_n17.csv   (local tree: sync)
+# source sha256: 2a1a9b88c026f04c09d9074e371b763385811c8e5a18cf205762e62e06b4aa29
+# precision shipped: Float64 round-trip (17 significant digits)
+# credit: same-rule:Festa and Sommariva 2012, SMR09 (count first published by Moller 1976)
+# credit note: our search converged to a rule identical to this published one; the rule is theirs, cite them
+# credit evidence grade: none
+# credit evidence: no sidecar, worker-log or lineage evidence in either local tree
+# lineage parent: -
+# lineage chain root: -
+# credit vocabulary: ours | derived-from:<rule> (<paper>) | transcribed:<source> | same-rule:<source> | unrecorded
+# tie: same-rule:Festa and Sommariva 2012, SMR09 (count first published by Moller 1976)
+# tie note: our bank file IS this published rule (rules/literature.tsv), confirmed here against smr09.csv
+# tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
+# extended precision: twin-shipped
+# Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
+# extended-precision twin: rules_extended/legendre_d2_p9_q5_n17.mp.csv (80 digits, verified rel err 1.437775e-78)
+# Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# extended-precision source sha256: abb5aee5d4ed06e02344d736f1ef169af4565a5d9b8843143869ea752d0bfb80
+# generated: 2026-09-19T14:47:20 by make_publish.jl
+# columns: x1,x2,w
+x1,x2,w
+0.9639808229797848,0.12486145001054973,0.02802490053239912
+0.03601917702021517,0.8751385499894503,0.02802490053239912
+0.015575016819011139,0.18465994013416556,0.022219844542549678
+0.9844249831809888,0.8153400598658345,0.022219844542549678
+0.07369213533316885,0.5381041640963086,0.0672628344099452
+0.9263078646668311,0.46189583590369143,0.0672628344099452
+0.5381041640963086,0.9263078646668311,0.0672628344099452
+0.46189583590369143,0.07369213533316885,0.0672628344099452
+0.2733300894321764,0.7618679101072147,0.09957060981551752
+0.7266699105678236,0.23813208989278534,0.09957060981551752
+0.12486145001054973,0.03601917702021517,0.02802490053239912
+0.8751385499894503,0.9639808229797848,0.02802490053239912
+0.18465994013416556,0.9844249831809888,0.022219844542549678
+0.8153400598658345,0.015575016819011139,0.022219844542549678
+0.5,0.5,0.13168724279835392
+0.7618679101072147,0.7266699105678236,0.09957060981551752
+0.23813208989278534,0.2733300894321764,0.09957060981551752

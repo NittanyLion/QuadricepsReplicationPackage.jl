@@ -1,0 +1,55 @@
+# Designed quadrature rule — Legendre / uniform (Le) family
+# family: legendre
+# weight function: uniform on the unit cube, density 1 on [0,1]^d (Lebesgue measure, the unit cube frame of the bank)
+# normalization: total mass 1, so the weights sum to 1
+# verified: sum of weights = 1   (|sum w - 1| = 1.388e-17)
+# domain: [0,1]^d
+# d: 4   p: 5   q: 3   n: 21
+# exactness: all monomials of total degree <= p
+# verified max relative monomial error (BigFloat, 192 bits): 1.387779e-17
+# relative error definition: |sum_s w_s prod_k x_sk^a_k - E[x^a]| / max(sum_s |w_s| prod_k |x_sk|^a_k, 1)
+# project relative gate: 1.0e-11 (passed)
+# min weight: 0.036137825379602855   max weight: 0.16666666666666666   (all weights positive)
+# node range: [4.9977108760283441e-07, 0.99999950022891237] (all nodes strictly inside the cube)
+# source file: rules/legendre_d4_p5_n21.csv   (local tree: sync)
+# source sha256: 684410112a8b18ef928fedc09df99b564c28f0934796040bd4c8e0133c6c3490
+# precision shipped: Float64 round-trip (17 significant digits)
+# credit: ours
+# credit note: our own tooling produced this rule — a worker log names this exact file on a production line — launcher.log: BANKED /home/joris/oldDesignedQuadrature/julia/rules/legendre_d4_p5_n21.csv; another machine's index of ITS OWN worker logs names this exact file on a production line — comms/provenance/poppyrose.tsv (that machine's own log launcher.log), banked 2026-09-12T03:19:48. There is no entry in rules/literature.tsv and no node-level match against the published rules held locally, so this is our work
+# credit evidence grade: log-names-file
+# credit evidence: a worker log names this exact file on a production line — launcher.log: BANKED /home/joris/oldDesignedQuadrature/julia/rules/legendre_d4_p5_n21.csv; another machine's index of ITS OWN worker logs names this exact file on a production line — comms/provenance/poppyrose.tsv (that machine's own log launcher.log), banked 2026-09-12T03:19:48
+# lineage parent: unrecorded
+# lineage chain root: unrecorded
+# credit vocabulary: ours | derived-from:<rule> (<paper>) | transcribed:<source> | same-rule:<source> | unrecorded
+# tie: unestablished:V. Keshavarzzadeh, R. M. Kirby, A. Narayan, Numerical integration in multiple dimensions with designed quadrature, SIAM J. Sci. Comput. 40 (2018) A2033-A2061.
+# tie note: per the literature survey (publish/shared/literature_best.tsv, source key keshavarzzadeh2018): our n=21 equals the best published count; UNESTABLISHED - and not settleable from anything published: Keshavarzzadeh, Kirby and Narayan report the COUNT 21 (SISC 40 (2018) A2033, Tables 1-2) but publish no coordinates for that rule, and no supplement carrying them could be found, …
+# tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
+# extended precision: twin-shipped
+# Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
+# extended-precision twin: rules_extended/legendre_d4_p5_q3_n21.mp.csv (80 digits, verified rel err 4.737647e-76)
+# Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# extended-precision source sha256: 7378d98c5e5060887bd9c7819a5c587abf17120d2e44162e81082ceec94c1d92
+# generated: 2026-09-19T14:47:55 by make_publish.jl
+# columns: x1,x2,x3,x4,w
+x1,x2,x3,x4,w
+0.5,0.5,0.5,0.5,0.16666666666666666
+0.096825370953888,0.7872558954020985,0.7526345524581896,0.8018444168019658,0.047867797650554454
+0.903174629046112,0.21274410459790147,0.24736544754181045,0.19815558319803417,0.047867797650554454
+0.15912417516783972,0.9333150197597663,0.3303489190450608,0.24065413744112196,0.04399970940809011
+0.8408758248321603,0.06668498024023378,0.6696510809549392,0.759345862558878,0.04399970940809011
+0.25649295235772546,0.18377286102740126,0.95258338254218,0.6894016794340181,0.042918636375294666
+0.7435070476422746,0.8162271389725987,0.04741661745782002,0.31059832056598197,0.042918636375294666
+0.4722253555055423,0.9106887832744212,0.2355975408456541,0.9008174547208698,0.04198951056314996
+0.5277746444944577,0.08931121672557889,0.7644024591543459,0.0991825452791302,0.04198951056314996
+0.37588363178110057,0.020386974167018814,0.1070237280520282,0.48833285478977795,0.036137825379602855
+0.6241163682188994,0.9796130258329812,0.8929762719479718,0.511667145210222,0.036137825379602855
+0.720672577555675,0.6008236111643392,0.8573046267014431,0.9620298872199277,0.04009910911688555
+0.27932742244432496,0.3991763888356608,0.1426953732985568,0.037970112780072375,0.04009910911688555
+0.8022421819984064,0.33598823242733844,0.10850422455037119,0.8584422705591895,0.04621389787070659
+0.19775781800159362,0.6640117675726616,0.8914957754496288,0.14155772944081044,0.04621389787070659
+0.08608745163278138,0.5770317762196405,0.06524914594538656,0.6836687307501915,0.03944802685386105
+0.9139125483672186,0.42296822378035953,0.9347508540546134,0.3163312692498085,0.03944802685386105
+0.9999995002289124,0.8242334416224651,0.45414763268164254,0.7068108689498493,0.03659891242662048
+4.997710876028344e-7,0.17576655837753488,0.5458523673183574,0.29318913105015065,0.03659891242662048
+0.20686857446529405,0.18773663316869862,0.41452251660299433,0.9574485292699998,0.04139324102190096
+0.793131425534706,0.8122633668313014,0.5854774833970057,0.042551470730000186,0.04139324102190096

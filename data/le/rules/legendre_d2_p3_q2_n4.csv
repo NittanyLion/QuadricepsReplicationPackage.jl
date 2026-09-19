@@ -1,0 +1,38 @@
+# Designed quadrature rule — Legendre / uniform (Le) family
+# family: legendre
+# weight function: uniform on the unit cube, density 1 on [0,1]^d (Lebesgue measure, the unit cube frame of the bank)
+# normalization: total mass 1, so the weights sum to 1
+# verified: sum of weights = 1   (|sum w - 1| = 0.000e+00)
+# domain: [0,1]^d
+# d: 2   p: 3   q: 2   n: 4
+# exactness: all monomials of total degree <= p
+# verified max relative monomial error (BigFloat, 192 bits): 2.015365e-17
+# relative error definition: |sum_s w_s prod_k x_sk^a_k - E[x^a]| / max(sum_s |w_s| prod_k |x_sk|^a_k, 1)
+# project relative gate: 1.0e-11 (passed)
+# min weight: 0.20875706300173269   max weight: 0.29124293699826731   (all weights positive)
+# node range: [0.12357900246220095, 0.87642099753779901] (all nodes strictly inside the cube)
+# source file: rules/legendre_d2_p3_n4.csv   (local tree: sync)
+# source sha256: 24ed0871f026f6a4cebde9f6c3dda10012a3fa4a946418eebcf438af8087b2c7
+# precision shipped: Float64 round-trip (17 significant digits)
+# credit: unrecorded
+# credit note: no entry in rules/literature.tsv or rules/lineage/; the per-rule lineage ledger only starts 2026-09-10, so this rule's origin is genuinely unrecorded. No evidence for this cell in any source consulted either: no worker log naming the file, no per-host provenance index naming it (comms/provenance/, which is how the office desktop and the laptop report their own logs), no lineage entry, no cluster harvest ledger (OSPool and Roar finds ARE recorded there), no downgrade entry and no sidecar reaching this count. So this deposit does not show who made it, in either direction
+# credit evidence grade: none
+# credit evidence: no sidecar, worker-log or lineage evidence in either local tree
+# lineage parent: unrecorded
+# lineage chain root: unrecorded
+# credit vocabulary: ours | derived-from:<rule> (<paper>) | transcribed:<source> | same-rule:<source> | unrecorded
+# tie: unestablished:Diallo and Worku, arXiv:2601.14488
+# tie note: our n=4 equals their published count, but the repo holds no node data for this cell — published counts for every degree are in symq/dw_counts.tsv, but node data (symq/dw_rules/) covers only square p 37-77 and cube p 27-45
+# tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
+# extended precision: twin-shipped
+# Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
+# extended-precision twin: rules_extended/legendre_d2_p3_q2_n4.mp.csv (80 digits, verified rel err 5.244709e-75)
+# Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# extended-precision source sha256: e0e67c34a0d2a2b4deff4080b4c0c7230f8ee4b303d1b65611af7953bfdb78a6
+# generated: 2026-09-19T14:47:20 by make_publish.jl
+# columns: x1,x2,w
+x1,x2,w
+0.12357900246220095,0.7406268434806246,0.2087570630017327
+0.876420997537799,0.25937315651937537,0.2087570630017327
+0.2962784545344675,0.18131125249850794,0.2912429369982673
+0.7037215454655326,0.8186887475014921,0.2912429369982673

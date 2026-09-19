@@ -1,0 +1,67 @@
+# Designed quadrature rule — Legendre / uniform (Le) family
+# family: legendre
+# weight function: uniform on the unit cube, density 1 on [0,1]^d (Lebesgue measure, the unit cube frame of the bank)
+# normalization: total mass 1, so the weights sum to 1
+# verified: sum of weights = 1   (|sum w - 1| = 2.776e-17)
+# domain: [0,1]^d
+# d: 2   p: 13   q: 7   n: 33
+# exactness: all monomials of total degree <= p
+# verified max relative monomial error (BigFloat, 192 bits): 2.775558e-17
+# relative error definition: |sum_s w_s prod_k x_sk^a_k - E[x^a]| / max(sum_s |w_s| prod_k |x_sk|^a_k, 1)
+# project relative gate: 1.0e-11 (passed)
+# min weight: 0.007497959716124783   max weight: 0.075095528857806335   (all weights positive)
+# node range: [0.0082566587800638677, 0.99174334121993613] (all nodes strictly inside the cube)
+# source file: rules/legendre_d2_p13_n33.csv   (local tree: sync)
+# source sha256: b02bcaded12b5a427f51743f8b6857cb0e25174158467ec76dea8ce19041d728
+# precision shipped: Float64 round-trip (17 significant digits)
+# credit: same-rule:Festa and Sommariva 2012, SMR13
+# credit note: our search converged to a rule identical to this published one; the rule is theirs, cite them
+# credit evidence grade: cluster-find-ledger
+# credit evidence: a cluster harvest ledger recorded this file as new to the bank — OSPool harvest ledger (cluster/finds_ospool.tsv), recorded new to the bank at the pull of 2026-09-02 19:12 UTC
+# lineage parent: -
+# lineage chain root: -
+# credit vocabulary: ours | derived-from:<rule> (<paper>) | transcribed:<source> | same-rule:<source> | unrecorded
+# tie: same-rule:Festa and Sommariva 2012, SMR13
+# tie note: our bank file IS this published rule (rules/literature.tsv), confirmed here against smr13.csv
+# tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
+# extended precision: twin-shipped
+# Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
+# extended-precision twin: rules_extended/legendre_d2_p13_q7_n33.mp.csv (80 digits, verified rel err 4.148388e-72)
+# Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# extended-precision source sha256: 85d504d6cfb9a3166899ff97ddc82ba8bd3ace56289db482ffaf61b7ce34914a
+# generated: 2026-09-19T14:47:20 by make_publish.jl
+# columns: x1,x2,w
+x1,x2,w
+0.9297780028208195,0.9786488498931537,0.009543605329270918
+0.07022199717918054,0.021351150106846316,0.009543605329270918
+0.4309082700687673,0.9794625851437674,0.015106230954437494
+0.5690917299312327,0.02053741485623257,0.015106230954437494
+0.008256658780063868,0.11059514422279029,0.007497959716124783
+0.9917433412199361,0.8894048557772097,0.007497959716124783
+0.6953681080647305,0.9706636129364626,0.019373184633276336
+0.3046318919352695,0.029336387063537382,0.019373184633276336
+0.7379043126091379,0.07496166315012572,0.0297111668251489
+0.26209568739086203,0.9250383368498742,0.0297111668251489
+0.32864172197979663,0.7046522808470195,0.06421768737049197
+0.6713582780202034,0.2953477191529806,0.06421768737049197
+0.9250383368498742,0.7379043126091379,0.0297111668251489
+0.07496166315012572,0.26209568739086203,0.0297111668251489
+0.02053741485623257,0.4309082700687673,0.015106230954437494
+0.9794625851437674,0.5690917299312327,0.015106230954437494
+0.8239108185935053,0.8779026782860407,0.032440887592500675
+0.17608918140649463,0.12209732171395928,0.032440887592500675
+0.029336387063537382,0.6953681080647305,0.019373184633276336
+0.9706636129364626,0.3046318919352695,0.019373184633276336
+0.11059514422279029,0.9917433412199361,0.007497959716124783
+0.8894048557772097,0.008256658780063868,0.007497959716124783
+0.5,0.5,0.07509552885780633
+0.5353707544982225,0.8481250392458747,0.05333539536429735
+0.46462924550177753,0.1518749607541253,0.05333539536429735
+0.021351150106846316,0.9297780028208195,0.009543605329270918
+0.9786488498931537,0.07022199717918054,0.009543605329270918
+0.1518749607541253,0.5353707544982225,0.05333539536429735
+0.8481250392458747,0.46462924550177753,0.05333539536429735
+0.8779026782860407,0.17608918140649463,0.032440887592500675
+0.12209732171395928,0.8239108185935053,0.032440887592500675
+0.7046522808470195,0.6713582780202034,0.06421768737049197
+0.2953477191529806,0.32864172197979663,0.06421768737049197

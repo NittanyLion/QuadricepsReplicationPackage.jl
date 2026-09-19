@@ -1,0 +1,35 @@
+# Designed quadrature rule — Gauss–Hermite (GH) family
+# family: hermite
+# weight function: standard normal N(0, I_d), density (2*pi)^(-d/2) * exp(-|x|^2 / 2) on R^d
+# normalization: probabilists' normalization: total mass 1, so the weights sum to 1
+# verified: sum of weights = 1   (|sum w - 1| = 0.000e+00)
+# domain: R^d
+# d: 4   p: 1   q: 1   n: 1
+# exactness: all monomials of total degree <= p
+# verified max relative monomial error (BigFloat, 192 bits): 0.000000e+00
+# relative error definition: |sum_s w_s prod_k x_sk^a_k - E[x^a]| / max(sum_s |w_s| prod_k |x_sk|^a_k, 1)
+# project relative gate: 1.0e-11 (passed)
+# min weight: 1   max weight: 1   (all weights positive)
+# node range: [0, 0]   max |node| = 0
+# source file: rules/hermite_d4_p1_n1.csv   (local tree: sync)
+# source sha256: 801ea0a44cb23130b1144d35f034eff8810d321ccf0c60926a9b0c041894a7fd
+# precision shipped: Float64 round-trip (17 significant digits)
+# credit: unrecorded
+# credit note: no entry in rules/literature.tsv or rules/lineage/; the per-rule lineage ledger only starts 2026-09-10, so this rule's origin is genuinely unrecorded. No evidence for this cell in any source consulted either: no worker log naming the file, no per-host provenance index naming it (comms/provenance/, which is how the office desktop and the laptop report their own logs), no lineage entry, no cluster harvest ledger (OSPool and Roar finds ARE recorded there), no downgrade entry and no sidecar reaching this count. So this deposit does not show who made it, in either direction
+# credit evidence grade: none
+# credit evidence: no sidecar, worker-log or lineage evidence in either local tree
+# lineage parent: unrecorded
+# lineage chain root: unrecorded
+# credit vocabulary: ours | derived-from:<rule> (<paper>) | transcribed:<source> | same-rule:<source> | unrecorded
+# tie: no-tie
+# tie note: Stroud E_n^{r^2} rules (Burkardt's sources, litcheck/stroud_m/): published count(s) 22, 24, 31, 49, 65, 96 for this cell, ours is 1; Van Zandt, Efficient cubature rules, ETNA 51 (2019) 219-239 (arXiv:1712.07309v3): published count(s) 16 for this cell, ours is 1; literature survey (publish/shared/literature_best.tsv, source key ecf): best published count 8 for this cell, ours is 1
+# tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
+# extended precision: twin-shipped
+# Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
+# extended-precision twin: rules_extended/hermite_d4_p1_q1_n1.mp.csv (40 digits, verified rel err 0.000000e+00)
+# Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# extended-precision source sha256: 157f3cdd4156826911d2057286b18a9ec345be8240f97c7fc964a4290830750f
+# generated: 2026-09-19T14:44:26 by make_publish.jl
+# columns: x1,x2,x3,x4,w
+x1,x2,x3,x4,w
+0.0,0.0,0.0,0.0,1.0

@@ -1,0 +1,58 @@
+# Designed quadrature rule — Legendre / uniform (Le) family
+# family: legendre
+# weight function: uniform on the unit cube, density 1 on [0,1]^d (Lebesgue measure, the unit cube frame of the bank)
+# normalization: total mass 1, so the weights sum to 1
+# verified: sum of weights = 1   (|sum w - 1| = 0.000e+00)
+# domain: [0,1]^d
+# d: 2   p: 11   q: 6   n: 24
+# exactness: all monomials of total degree <= p
+# verified max relative monomial error (BigFloat, 192 bits): 1.510509e-17
+# relative error definition: |sum_s w_s prod_k x_sk^a_k - E[x^a]| / max(sum_s |w_s| prod_k |x_sk|^a_k, 1)
+# project relative gate: 1.0e-11 (passed)
+# min weight: 0.0064343947533339416   max weight: 0.092356377288420666   (all weights positive)
+# node range: [0.012000711438810699, 0.98799928856118935] (all nodes strictly inside the cube)
+# source file: rules/legendre_d2_p11_n24.csv   (local tree: sync)
+# source sha256: 49becef6d01f0630cd504de597d929eb23082552842c6212fc7ce9584c645555
+# precision shipped: Float64 round-trip (17 significant digits)
+# credit: ours
+# credit note: our own tooling produced this rule — a cluster harvest ledger recorded this file as new to the bank — OSPool harvest ledger (cluster/finds_ospool.tsv), recorded new to the bank at the pull of 2026-09-02 19:12 UTC. There is no entry in rules/literature.tsv and no node-level match against the published rules held locally, so this is our work
+# credit evidence grade: cluster-find-ledger
+# credit evidence: a cluster harvest ledger recorded this file as new to the bank — OSPool harvest ledger (cluster/finds_ospool.tsv), recorded new to the bank at the pull of 2026-09-02 19:12 UTC
+# lineage parent: unrecorded
+# lineage chain root: unrecorded
+# credit vocabulary: ours | derived-from:<rule> (<paper>) | transcribed:<source> | same-rule:<source> | unrecorded
+# tie: distinct:Festa and Sommariva 2012, J. Comput. Appl. Math. 236(17), 4296-4302
+# tie note: equal count n=24, and a different rule: smr11.csv: different node set up to the cube's symmetry (tol 1e-8); Diallo and Worku, arXiv:2601.14488: published count(s) 28 for this cell, ours is 24
+# tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
+# extended precision: twin-shipped
+# Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
+# extended-precision twin: rules_extended/legendre_d2_p11_q6_n24.mp.csv (80 digits, verified rel err 4.712622e-73)
+# Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# extended-precision source sha256: 3352bbbcf5c4b386a4d588ab197f651f1e1374c885e16f7310eee729cb797194
+# generated: 2026-09-19T14:47:20 by make_publish.jl
+# columns: x1,x2,w
+x1,x2,w
+0.9762090448902123,0.974434130795715,0.006434394753333942
+0.023790955109787633,0.025565869204285007,0.006434394753333942
+0.3921000681198235,0.6115154724686799,0.09235637728842067
+0.6078999318801764,0.38848452753132007,0.09235637728842067
+0.1009759966311078,0.13630959888094915,0.03802445306037744
+0.8990240033688922,0.8636904011190508,0.03802445306037744
+0.1364223475768316,0.9879992885611893,0.012638868188267257
+0.8635776524231684,0.012000711438810699,0.012638868188267257
+0.7416142585344424,0.9735067184889789,0.02356406699713348
+0.2583857414655576,0.02649328151102119,0.02356406699713348
+0.8176864020091726,0.5891038156742434,0.07335138246859307
+0.1823135979908273,0.4108961843257566,0.07335138246859307
+0.013176149914861176,0.31940328355063763,0.017994749518589714
+0.9868238500851388,0.6805967164493624,0.017994749518589714
+0.026068627812338013,0.9058719213854766,0.015545496635873969
+0.973931372187662,0.09412807861452346,0.015545496635873969
+0.9452088088910238,0.35916992033886513,0.04157347882634677
+0.05479119110897623,0.6408300796611348,0.04157347882634677
+0.6248873644732675,0.7945315175063866,0.0757796257600147
+0.37511263552673246,0.20546848249361335,0.0757796257600147
+0.420225268456307,0.9456787004244694,0.04257467774895414
+0.5797747315436931,0.054321299575530606,0.04257467774895414
+0.20659633835500388,0.8200399317203013,0.06016242875409485
+0.7934036616449961,0.17996006827969865,0.06016242875409485

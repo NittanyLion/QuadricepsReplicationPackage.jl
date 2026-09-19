@@ -1,0 +1,44 @@
+# Designed quadrature rule — Legendre / uniform (Le) family
+# family: legendre
+# weight function: uniform on the unit cube, density 1 on [0,1]^d (Lebesgue measure, the unit cube frame of the bank)
+# normalization: total mass 1, so the weights sum to 1
+# verified: sum of weights = 1   (|sum w - 1| = 0.000e+00)
+# domain: [0,1]^d
+# d: 5   p: 3   q: 2   n: 10
+# exactness: all monomials of total degree <= p
+# verified max relative monomial error (BigFloat, 192 bits): 2.122836e-17
+# relative error definition: |sum_s w_s prod_k x_sk^a_k - E[x^a]| / max(sum_s |w_s| prod_k |x_sk|^a_k, 1)
+# project relative gate: 1.0e-11 (passed)
+# min weight: 0.08502385477266787   max weight: 0.11611406020152457   (all weights positive)
+# node range: [4.9965964005257457e-07, 0.99999950034035989] (all nodes strictly inside the cube)
+# source file: rules/legendre_d5_p3_n10.csv   (local tree: sync)
+# source sha256: b212cab6931b5ad621381ed0c3f4ba3b970acb1026a99b07853abe94b8c6c795
+# precision shipped: Float64 round-trip (17 significant digits)
+# credit: ours
+# credit note: our own tooling produced this rule — another machine's index of ITS OWN worker logs names this exact file on a production line — comms/provenance/L2ECON-LT0002.tsv (that machine's own log legendre.log), banked 2026-09-11T14:38:02. There is no entry in rules/literature.tsv and no node-level match against the published rules held locally, so this is our work
+# credit evidence grade: host-provenance-index
+# credit evidence: another machine's index of ITS OWN worker logs names this exact file on a production line — comms/provenance/L2ECON-LT0002.tsv (that machine's own log legendre.log), banked 2026-09-11T14:38:02
+# lineage parent: unrecorded
+# lineage chain root: unrecorded
+# credit vocabulary: ours | derived-from:<rule> (<paper>) | transcribed:<source> | same-rule:<source> | unrecorded
+# tie: unestablished:A. H. Stroud, Approximate Calculation of Multiple Integrals, Prentice-Hall, 1971.
+# tie note: per the literature survey (publish/shared/literature_best.tsv, source key stroud1971): our n=10 equals the best published count; UNESTABLISHED - the repo does not record a node-for-node comparison for this cell. Settled by comparing our banked rule with the published coordinates.
+# tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
+# extended precision: twin-shipped
+# Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
+# extended-precision twin: rules_extended/legendre_d5_p3_q2_n10.mp.csv (80 digits, verified rel err 4.112220e-77)
+# Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# extended-precision source sha256: 6eee6f41a229222a3efea06274d4ef97dcd9675cfb7cadaaf58230848f017104
+# generated: 2026-09-19T14:48:04 by make_publish.jl
+# columns: x1,x2,x3,x4,x5,w
+x1,x2,x3,x4,x5,w
+0.8340836597364729,0.5776843449450246,4.996596400525746e-7,0.3328629603500671,0.3084348665816422,0.0963885359586744
+0.16591634026352706,0.42231565505497537,0.9999995003403599,0.6671370396499329,0.6915651334183578,0.0963885359586744
+0.25736399688263767,0.12815915357405644,0.3239503825639838,0.13703831882941528,0.7022399612879641,0.10396562396814832
+0.7426360031173623,0.8718408464259435,0.6760496174360162,0.8629616811705847,0.29776003871203593,0.10396562396814832
+0.3850626689539317,0.10553328201887377,0.39529031818501986,0.8251375060333181,0.1292106858540335,0.09850792509898484
+0.6149373310460683,0.8944667179811262,0.6047096818149801,0.17486249396668183,0.8707893141459665,0.09850792509898484
+0.9137391077150474,0.21003161697835795,0.5778430502762086,0.638639990137357,0.7798218374266904,0.11611406020152457
+0.08626089228495255,0.7899683830216421,0.42215694972379136,0.36136000986264305,0.22017816257330955,0.11611406020152457
+0.2939417424572558,0.637983836142817,0.11559594826288767,0.8854475639897406,0.8636243970591104,0.08502385477266787
+0.7060582575427442,0.36201616385718305,0.8844040517371123,0.11455243601025944,0.13637560294088957,0.08502385477266787

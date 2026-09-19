@@ -1,0 +1,10 @@
+{
+  "title": "QuadricepsReplicationPackage.jl: replication package for 'Positive weight Hermite and Legendre quadrature rules'",
+  "upload_type": "software",
+  "description": "Julia package that holds every positive-weight quadrature rule of the paper's two tables (Gaussian weight N(0, I_d) and uniform weight on [0,1]^d, d = 2,...,5) in double precision and rebuilds the tables from them: node counts, the quality measure rho, Moeller's lower bound, and the largest relative error over all monomials of total degree at most p in 192-bit arithmetic.",
+  "creators": [
+    { "name": "Pinkse, Joris", "affiliation": "Department of Economics, Penn State" }
+  ],
+  "license": "MIT",
+  "keywords": ["cubature", "quadrature", "positive weights", "Gauss-Hermite", "Gauss-Legendre", "replication package", "Julia"]
+}

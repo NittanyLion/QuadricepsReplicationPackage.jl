@@ -1,0 +1,40 @@
+# Designed quadrature rule — Legendre / uniform (Le) family
+# family: legendre
+# weight function: uniform on the unit cube, density 1 on [0,1]^d (Lebesgue measure, the unit cube frame of the bank)
+# normalization: total mass 1, so the weights sum to 1
+# verified: sum of weights = 1   (|sum w - 1| = 0.000e+00)
+# domain: [0,1]^d
+# d: 3   p: 3   q: 2   n: 6
+# exactness: all monomials of total degree <= p
+# verified max relative monomial error (BigFloat, 192 bits): 3.075673e-17
+# relative error definition: |sum_s w_s prod_k x_sk^a_k - E[x^a]| / max(sum_s |w_s| prod_k |x_sk|^a_k, 1)
+# project relative gate: 1.0e-11 (passed)
+# min weight: 0.14956266870023752   max weight: 0.18144580163865812   (all weights positive)
+# node range: [0.05933834491371813, 0.94066165508628186] (all nodes strictly inside the cube)
+# source file: rules/legendre_d3_p3_n6.csv   (local tree: sync)
+# source sha256: 0ae30e04257dedce30acc9b1923492a2c729034a15e6a95dd624d8566e7eb7e8
+# precision shipped: Float64 round-trip (17 significant digits)
+# credit: ours
+# credit note: our own tooling produced this rule — another machine's index of ITS OWN worker logs names this exact file on a production line — comms/provenance/L2ECON-LT0002.tsv (that machine's own log legendre.log), banked 2026-09-11T14:38:02. There is no entry in rules/literature.tsv and no node-level match against the published rules held locally, so this is our work
+# credit evidence grade: host-provenance-index
+# credit evidence: another machine's index of ITS OWN worker logs names this exact file on a production line — comms/provenance/L2ECON-LT0002.tsv (that machine's own log legendre.log), banked 2026-09-11T14:38:02
+# lineage parent: unrecorded
+# lineage chain root: unrecorded
+# credit vocabulary: ours | derived-from:<rule> (<paper>) | transcribed:<source> | same-rule:<source> | unrecorded
+# tie: unestablished:A. H. Stroud, Approximate Calculation of Multiple Integrals, Prentice-Hall, 1971.
+# tie note: Diallo and Worku, arXiv:2601.14488: published count(s) 8 for this cell, ours is 6; per the literature survey (publish/shared/literature_best.tsv, source key stroud1971): our n=6 equals the best published count; UNESTABLISHED - the repo does not record a node-for-node comparison for this cell. Settled by comparing our banked rule with the published coordinates.
+# tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
+# extended precision: twin-shipped
+# Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
+# extended-precision twin: rules_extended/legendre_d3_p3_q2_n6.mp.csv (80 digits, verified rel err 1.143200e-76)
+# Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# extended-precision source sha256: b6c2baa0cdb3f006a22c89a12b99c9b684f67331c4cc18cb6e11d001d128c542
+# generated: 2026-09-19T14:47:24 by make_publish.jl
+# columns: x1,x2,x3,w
+x1,x2,x3,w
+0.6630610123697845,0.05933834491371813,0.33941017105611604,0.16899152966110437
+0.33693898763021546,0.9406616550862819,0.660589828943884,0.16899152966110437
+0.7591343590381721,0.4501185091489016,0.8999977561693655,0.18144580163865812
+0.24086564096182791,0.5498814908510984,0.10000224383063454,0.18144580163865812
+0.9087561742638959,0.7369884870762107,0.26474510489249264,0.14956266870023752
+0.09124382573610416,0.2630115129237894,0.7352548951075074,0.14956266870023752

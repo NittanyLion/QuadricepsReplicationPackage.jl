@@ -1,0 +1,60 @@
+# Designed quadrature rule — Legendre / uniform (Le) family
+# family: legendre
+# weight function: uniform on the unit cube, density 1 on [0,1]^d (Lebesgue measure, the unit cube frame of the bank)
+# normalization: total mass 1, so the weights sum to 1
+# verified: sum of weights = 1   (|sum w - 1| = 3.469e-18)
+# domain: [0,1]^d
+# d: 3   p: 7   q: 4   n: 26
+# exactness: all monomials of total degree <= p
+# verified max relative monomial error (BigFloat, 192 bits): 2.449519e-17
+# relative error definition: |sum_s w_s prod_k x_sk^a_k - E[x^a]| / max(sum_s |w_s| prod_k |x_sk|^a_k, 1)
+# project relative gate: 1.0e-11 (passed)
+# min weight: 0.0093253863018143042   max weight: 0.087886063764530245   (all weights positive)
+# node range: [4.9958809844260825e-07, 0.99999950041190155] (all nodes strictly inside the cube)
+# source file: rules/legendre_d3_p7_n26.csv   (local tree: sync)
+# source sha256: 336353e7a27423e587dc477d1ae065bb2e3704c504dc4e5380a961276bb08436
+# precision shipped: Float64 round-trip (17 significant digits)
+# credit: ours
+# credit note: our own tooling produced this rule — another machine's index of ITS OWN worker logs names this exact file on a production line — comms/provenance/L2ECON-LT0002.tsv (that machine's own log legendre.log), banked 2026-09-11T14:38:02. There is no entry in rules/literature.tsv and no node-level match against the published rules held locally, so this is our work
+# credit evidence grade: host-provenance-index
+# credit evidence: another machine's index of ITS OWN worker logs names this exact file on a production line — comms/provenance/L2ECON-LT0002.tsv (that machine's own log legendre.log), banked 2026-09-11T14:38:02
+# lineage parent: unrecorded
+# lineage chain root: unrecorded
+# credit vocabulary: ours | derived-from:<rule> (<paper>) | transcribed:<source> | same-rule:<source> | unrecorded
+# tie: distinct:Xiao and Gimbutas 2010, Comput. Math. Appl. 59, 663-676
+# tie note: Diallo and Worku, arXiv:2601.14488: published count(s) 34 for this cell, ours is 26; equal count n=26, and a different rule: xg_cube_p7_n26.csv: different node set up to the cube's symmetry (tol 1e-8)
+# tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
+# extended precision: twin-shipped
+# Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
+# extended-precision twin: rules_extended/legendre_d3_p7_q4_n26.mp.csv (80 digits, verified rel err 6.932176e-76)
+# Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# extended-precision source sha256: 9179ab7ebd6de57127404bb46e51db1351ad13952b6cdf808256a63ecf1d35c3
+# generated: 2026-09-19T14:47:24 by make_publish.jl
+# columns: x1,x2,x3,w
+x1,x2,x3,w
+0.03165555921458557,0.9999995002711479,0.52298221758451,0.010910003804062414
+0.9683444407854145,4.997288521040763e-7,0.47701778241549,0.010910003804062414
+0.9534415539973352,0.32687825668757825,0.8312816175335166,0.03203752049877656
+0.04655844600266476,0.6731217433124218,0.16871838246648344,0.03203752049877656
+0.9539439335963947,0.8974457553105138,0.038020674726047206,0.009325386301814304
+0.04605606640360526,0.10255424468948618,0.9619793252739528,0.009325386301814304
+0.7450857006385748,0.07539180787109767,0.9230615517659804,0.024213312778883098
+0.2549142993614252,0.9246081921289023,0.07693844823401963,0.024213312778883098
+0.6163480860136439,0.6141021063849418,0.06573616137633946,0.051385030173790675
+0.3836519139863561,0.3858978936150583,0.9342638386236606,0.051385030173790675
+0.10977871748665564,0.7883873902119305,0.9083687955651936,0.03173567144427181
+0.8902212825133443,0.2116126097880695,0.09163120443480646,0.03173567144427181
+0.16045620293382096,0.24000751339938572,4.995880984426083e-7,0.01717953920464085
+0.839543797066179,0.7599924866006142,0.9999995004119016,0.01717953920464085
+0.07020204193967186,0.08585459645922712,0.29295442261382626,0.026037005585803855
+0.9297979580603282,0.9141454035407729,0.7070455773861737,0.026037005585803855
+0.7044854066940301,0.21138705694975027,0.4947997339017187,0.08200385477845164
+0.29551459330596985,0.7886129430502498,0.5052002660982813,0.08200385477845164
+0.3446018752332487,0.3773579767777389,0.27489733324333904,0.08788606376453025
+0.6553981247667513,0.622642023222261,0.725102666756661,0.08788606376453025
+0.6932852966393153,0.9271677274800857,0.29764199532298474,0.04818487644975461
+0.30671470336068474,0.07283227251991435,0.7023580046770153,0.04818487644975461
+0.528005502647168,0.0345982306124319,0.13191216568517375,0.026623839447839824
+0.47199449735283205,0.965401769387568,0.8680878343148263,0.026623839447839824
+0.07185499311883575,0.40304390284645086,0.6628162095260307,0.05247789576738012
+0.9281450068811642,0.5969560971535491,0.33718379047396924,0.05247789576738012

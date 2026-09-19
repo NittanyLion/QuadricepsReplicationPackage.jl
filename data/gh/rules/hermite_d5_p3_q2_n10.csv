@@ -1,0 +1,44 @@
+# Designed quadrature rule — Gauss–Hermite (GH) family
+# family: hermite
+# weight function: standard normal N(0, I_d), density (2*pi)^(-d/2) * exp(-|x|^2 / 2) on R^d
+# normalization: probabilists' normalization: total mass 1, so the weights sum to 1
+# verified: sum of weights = 1   (|sum w - 1| = 5.551e-17)
+# domain: R^d
+# d: 5   p: 3   q: 2   n: 10
+# exactness: all monomials of total degree <= p
+# verified max relative monomial error (BigFloat, 192 bits): 1.526838e-16
+# relative error definition: |sum_s w_s prod_k x_sk^a_k - E[x^a]| / max(sum_s |w_s| prod_k |x_sk|^a_k, 1)
+# project relative gate: 1.0e-11 (passed)
+# min weight: 0.10000000000000001   max weight: 0.10000000000000001   (all weights positive)
+# node range: [-2.2360679774997898, 2.2360679774997898]   max |node| = 2.2360679774997898
+# source file: rules/hermite_d5_p3_n10.csv   (local tree: sync)
+# source sha256: a73fa0c1b2ff294c86a45e3232f4b67c4a940ff1c4a4bce1bb2740380605e9e3
+# precision shipped: Float64 round-trip (17 significant digits)
+# credit: same-rule:Stroud 1971, E_n^{r^2}:3-1 (identified 2026-09-11, displacement 0.0; order 2N = 10 at N=5)
+# credit note: our search converged to a rule identical to this published one; the rule is theirs, cite them
+# credit evidence grade: log-names-file
+# credit evidence: a worker log names this exact file on a production line — d5p3_s1.log: BANKED /home/joris/oldDesignedQuadrature/julia/rules/hermite_d5_p3_n10.csv  (exactness 4.440892098500626e-16)  10 nodes = 1|4z(10); another machine's index of ITS OWN worker logs names this exact file on a production line — comms/provenance/poppyrose.tsv (that machine's own log d5p3_s1.log), banked 2026-08-09T02:49:51; symq sidecar best_d5_p3.txt records our search reaching exactly n=10 for this cell
+# lineage parent: -
+# lineage chain root: -
+# credit vocabulary: ours | derived-from:<rule> (<paper>) | transcribed:<source> | same-rule:<source> | unrecorded
+# tie: same-rule:Stroud 1971, E_n^{r^2}:3-1 (identified 2026-09-11, displacement 0.0; order 2N = 10 at N=5)
+# tie note: our bank file IS this published rule (rules/literature.tsv); the repo holds no 10-node data for this source, so it is taken from the register
+# tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
+# extended precision: twin-shipped
+# Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
+# extended-precision twin: rules_extended/hermite_d5_p3_q2_n10.mp.csv (40 digits, verified rel err 5.212073e-40)
+# Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# extended-precision source sha256: 95755dce06bb990a77563dcc13d6730839171427721560d8aa9e77ab5b630812
+# generated: 2026-09-19T14:44:36 by make_publish.jl
+# columns: x1,x2,x3,x4,x5,w
+x1,x2,x3,x4,x5,w
+-7.078576976706802e-33,-2.5905453746815218e-33,-2.8139293353693545e-33,-2.3175739283619954e-33,2.23606797749979,0.1
+7.078576976706802e-33,2.5905453746815218e-33,2.8139293353693545e-33,2.3175739283619954e-33,-2.23606797749979,0.1
+3.6573668826502496e-34,8.056631771930758e-33,-9.377347288284227e-34,2.23606797749979,2.317573928362005e-33,0.1
+-3.6573668826502496e-34,-8.056631771930758e-33,9.377347288284227e-34,-2.23606797749979,-2.317573928362005e-33,0.1
+7.033010466213158e-34,3.3153929285435616e-34,2.23606797749979,9.37734728828421e-34,2.813929335369345e-33,0.1
+-7.033010466213158e-34,-3.3153929285435616e-34,-2.23606797749979,-9.37734728828421e-34,-2.813929335369345e-33,0.1
+-2.813204186485264e-33,2.23606797749979,-3.3153929285434863e-34,-8.05663177193075e-33,2.590545374681557e-33,0.1
+2.813204186485264e-33,-2.23606797749979,3.3153929285434863e-34,8.05663177193075e-33,-2.590545374681557e-33,0.1
+2.23606797749979,2.8132041864852694e-33,-7.033010466213182e-34,-3.657366882650222e-34,7.078576976706831e-33,0.1
+-2.23606797749979,-2.8132041864852694e-33,7.033010466213182e-34,3.657366882650222e-34,-7.078576976706831e-33,0.1

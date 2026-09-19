@@ -1,0 +1,38 @@
+# Designed quadrature rule — Gauss–Hermite (GH) family
+# family: hermite
+# weight function: standard normal N(0, I_d), density (2*pi)^(-d/2) * exp(-|x|^2 / 2) on R^d
+# normalization: probabilists' normalization: total mass 1, so the weights sum to 1
+# verified: sum of weights = 1   (|sum w - 1| = 0.000e+00)
+# domain: R^d
+# d: 2   p: 3   q: 2   n: 4
+# exactness: all monomials of total degree <= p
+# verified max relative monomial error (BigFloat, 192 bits): 1.453773e-16
+# relative error definition: |sum_s w_s prod_k x_sk^a_k - E[x^a]| / max(sum_s |w_s| prod_k |x_sk|^a_k, 1)
+# project relative gate: 1.0e-11 (passed)
+# min weight: 0.13984991760789733   max weight: 0.36015008239210267   (all weights positive)
+# node range: [-1.6236075062285271, 1.6236075062285271]   max |node| = 1.6236075062285271
+# source file: rules/hermite_d2_p3_n4.csv   (local tree: sync)
+# source sha256: 0b430abc7b6884ed957b89ab497b1d7e52435a0b0d73c43627469079c723fe19
+# precision shipped: Float64 round-trip (17 significant digits)
+# credit: unrecorded
+# credit note: no entry in rules/literature.tsv or rules/lineage/; the per-rule lineage ledger only starts 2026-09-10, so this rule's origin is genuinely unrecorded. No evidence for this cell in any source consulted either: no worker log naming the file, no per-host provenance index naming it (comms/provenance/, which is how the office desktop and the laptop report their own logs), no lineage entry, no cluster harvest ledger (OSPool and Roar finds ARE recorded there), no downgrade entry and no sidecar reaching this count. So this deposit does not show who made it, in either direction
+# credit evidence grade: none
+# credit evidence: no sidecar, worker-log or lineage evidence in either local tree
+# lineage parent: unrecorded
+# lineage chain root: unrecorded
+# credit vocabulary: ours | derived-from:<rule> (<paper>) | transcribed:<source> | same-rule:<source> | unrecorded
+# tie: distinct:Van Zandt, Efficient cubature rules, ETNA 51 (2019) 219-239 (arXiv:1712.07309v3)
+# tie note: Stroud E_n^{r^2} rules (Burkardt's sources, litcheck/stroud_m/): published count(s) 7, 8, 9 for this cell, ours is 4; equal count n=4, and a different rule: vz_d2_p3_n4.csv: isometry-invariant fingerprints differ (weight multiset 1.102e-01, pairwise-distance multiset 9.532e-01), so no rotation or reflection can bring them together
+# tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
+# extended precision: twin-shipped
+# Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
+# extended-precision twin: rules_extended/hermite_d2_p3_q2_n4.mp.csv (40 digits, verified rel err 7.029366e-40)
+# Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# extended-precision source sha256: 8ffc2571541d662ef50c653a7a26ed893d2824246c2023d2aef0ffbcba5c6cda
+# generated: 2026-09-19T14:44:20 by make_publish.jl
+# columns: x1,x2,w
+x1,x2,w
+1.6236075062285271,0.9691026665749222,0.13984991760789733
+-1.6236075062285271,-0.9691026665749222,0.13984991760789733
+0.603891805869043,-1.0117434434724843,0.36015008239210267
+-0.603891805869043,1.0117434434724843,0.36015008239210267
