@@ -12,7 +12,7 @@
 # min weight: 3.7394854955961747e-14   max weight: 0.073667582380734037   (all weights positive)
 # node range: [-6.9660102094107517, 6.9660102094107517]   max |node| = 6.9660102094107517
 # source file: rules/hermite_d2_p29_n153.csv   (local tree: sync)
-# source sha256: 5944fcf3a787dfcc7a5e791437324838cde043899b5a8fcf73f83aa34e49face
+# source sha256: 92cd3b6cc13cdd69e84f9f1d21a9b8800acae895e370bdd3ee6e613b310cba56
 # precision shipped: Float64 round-trip (17 significant digits)
 # credit: ours
 # credit note: our own tooling produced this rule — a worker log names this exact file on a production line — free_d2p29.log: BANKED /home/joris/oldDesignedQuadrature/julia/rules/hermite_d2_p29_n153.csv (exactness 7.149746829600001e-13); another machine's index of ITS OWN worker logs names this exact file on a production line — comms/provenance/poppyrose.tsv (that machine's own log free_d2p29.log), banked 2026-09-05T05:01:53. There is no entry in rules/literature.tsv and no node-level match against the published rules held locally, so this is our work
@@ -26,11 +26,11 @@
 # tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
 # extended precision: twin-shipped
 # Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
-# extended-precision twin: rules_extended/hermite_d2_p29_q15_n153.mp.csv (40 digits, verified rel err 4.502449e-38)
+# extended-precision twin: rules_extended/hermite_d2_p29_q15_n153.mp.csv (80 digits, verified rel err 5.039337e-78)
 # Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
-# the twin rounded to IEEE binary128 (Float128): verified rel err 8.070951e-34 (4.19 eps128)
-# extended-precision source sha256: 9b6c80fd542115d604c1842ecc4b69de89db48210c093d084dbd56c39f246025
-# generated: 2026-09-19T21:16:47 by make_publish.jl
+# the twin rounded to IEEE binary128 (Float128): verified rel err 7.796714e-34 (4.05 eps128)
+# extended-precision source sha256: 6e8199e625e17b28ba1f565734389e3978faf51b06696cb2dc26077abbdedb35
+# generated: 2026-09-20T17:26:37 by make_publish.jl
 # columns: x1,x2,w
 x1,x2,w
 1.8164930093994849,3.793715505820656,2.2782528620600604e-5
@@ -84,7 +84,7 @@ x1,x2,w
 1.917436841776924,-2.967286361692281,0.00021980443220972242
 2.8370019066682604,0.06644912944300488,0.0022115266887853453
 -2.392775765083434,-2.9664394972441035,0.00010162389015972099
--1.0498970365536347e-35,-7.803540225652026e-36,0.0703517935198061
+0.0,0.0,0.0703517935198061
 2.267192446530759,4.848708920929211,1.235439478369151e-7
 0.7422974747081067,3.628661596811344,0.00015000900638102304
 3.811927499943047,0.21722963969770762,9.422797212362895e-5

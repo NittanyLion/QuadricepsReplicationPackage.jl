@@ -2,8 +2,10 @@
     PaperRow
 
 One row of a table in the paper, as typeset: `N` nodes, `rho`, `err` (the "rel. err." column as
-printed), `moller` (Möller's bound), `pair` (the ±pair counting floor, printed in the uniform-weight
-table only and `nothing` in the Gaussian one), `prev` (the best count in the literature,
+printed), `moller` (Möller's bound), `pair` (the counting-floor column: the ±pair floor in the
+uniform-weight table, which [`pair_floor`](@ref) recomputes, and the symmetric floor `sym` in the
+Gaussian one, which is the solution of a small integer program over orbit types computed outside
+this package and is taken as given, like `prev`), `prev` (the best count in the literature,
 `nothing` where only the product grid exists), `src` (the code of the source of `prev`, starred
 when the paper's rule was warm-started from theirs), and `shade` (`""`, `"light"` or `"dark"`).
 """
@@ -32,8 +34,8 @@ LaTeX source of the table as it appears in the paper (`data/paper/best_known_<fa
 function paper_rows(fam::AbstractString; dir::AbstractString = datadir())
     out = Dict{Tuple{Int,Int},PaperRow}()
     d = 0
-    # the uniform-weight table carries one column more than the Gaussian one: the pair floor,
-    # between Möller's bound and prev (2026-09-19)
+    # both tables carry a counting-floor column between Möller's bound and prev: pair in the
+    # uniform-weight table (2026-09-19), sym in the Gaussian one (2026-09-20)
     for l in eachline(joinpath(dir, "paper", "best_known_$fam.tex"))
         md = match(r"^\\multicolumn\{[78]\}\{@\{\}l\}\{\$d = (\d+)\$", l)
         md === nothing || (d = parse(Int, md[1]); continue)
@@ -52,17 +54,20 @@ end
 texerr(e) = e == 0 ? "0" : @sprintf("%.1e", e)
 
 """
-    table_row(cell, err, prev, src) -> String
+    table_row(cell, err, prev, src; symfloor = nothing) -> String
 
 The LaTeX row of the paper's table for `cell`, rebuilt from the rule: `N` is the number of data
 lines of the rule file, `ρ` and Möller's bound are computed, `err` is the verified error, and
 the shading follows from `N`, the bound and `prev`.  `prev` and `src` describe the literature
-and are taken as given.
+and are taken as given, and so is `symfloor`, the Gaussian table's `sym` column; the uniform
+table's `pair` column is recomputed.
 """
-function table_row(c::Cell, err::Float64, prev::Union{Int,Nothing}, src::AbstractString)
+function table_row(c::Cell, err::Float64, prev::Union{Int,Nothing}, src::AbstractString;
+                   symfloor::Union{Int,Nothing} = nothing)
     mb = moller_bound(c.d, c.p)
     shade = c.n == mb ? "dark" : (prev !== nothing && c.n ≥ prev) ? "light" : ""
-    pair = c.family == "le" ? string(pair_floor(c.d, c.p), " & ") : ""      # uniform weight only
+    pair = c.family == "le" ? string(pair_floor(c.d, c.p), " & ") :          # recomputed
+           symfloor === nothing ? "" : string(symfloor, " & ")            # Gaussian: sym, as given
     string(SHADE[shade], c.p, " & ", c.n, " & ", @sprintf("%.2f", rho(c.n, c.d, c.p)), " & ", texerr(err), " & ",
            mb, " & ", pair, prev === nothing ? "---" : prev, " & ", src, " \\\\")
 end

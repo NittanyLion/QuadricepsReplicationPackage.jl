@@ -25,13 +25,17 @@ const QRP = QuadricepsReplicationPackage
         @test pair_floor(5, 21) == 9820
         @test pair_floor(2, 1) == 1
         @test_throws ArgumentError pair_floor(3, 4)
-        # the column is the uniform-weight table's, and no rule there is below it (the Gaussian
-        # rules carry more symmetry and several are, which is why that table has no such column)
+        # the pair column is the uniform-weight table's, and no rule there is below it (the Gaussian
+        # rules carry more symmetry and several are, which is why that table prints sym instead)
         for (k, r) in paper_rows("le")
             @test r.pair == pair_floor(k...)
             @test r.N ≥ r.pair
         end
-        @test all(r.pair === nothing for (_, r) in paper_rows("gh"))
+        # the Gaussian table's floor column is sym, taken as given; the paper's claim about it is
+        # that no rule has fewer nodes than sym, and sym is never below Möller's bound
+        for (_, r) in paper_rows("gh")
+            @test r.pair !== nothing && r.N ≥ r.pair ≥ r.moller
+        end
     end
 
     @testset "verification kernel" begin
@@ -90,7 +94,9 @@ const QRP = QuadricepsReplicationPackage
             c = first(c for c in cells(e.family) if (c.d, c.p, c.n) == (e.d, e.p, e.n))
             err, problems = check_extended(c, e.file)
             @test isempty(problems)
-            @test err ≤ (e.family == "gh" ? 1e-34 : 1e-68)
+            @test err ≤ 1e-68                                    # both weights ship 80 digits (GH since 2026-09-20)
+            rec = QRP.recorded_extended(e.family)[(e.d, e.p, e.n)]  # the figure the paper's table prints
+            @test isapprox(err, rec; rtol = 1e-5)
             err128, problems128 = check_float128(c, e.file)     # the same file rounded to IEEE binary128
             @test isempty(problems128)
             @test err < err128 ≤ 10 * 2.0^-112

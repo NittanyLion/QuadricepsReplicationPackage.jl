@@ -26,11 +26,11 @@
 # tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
 # extended precision: twin-shipped
 # Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
-# extended-precision twin: rules_extended/hermite_d3_p25_q13_n776.mp.csv (40 digits, verified rel err 8.362403e-40)
+# extended-precision twin: rules_extended/hermite_d3_p25_q13_n776.mp.csv (80 digits, verified rel err 5.128354e-73)
 # Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
 # the twin rounded to IEEE binary128 (Float128): verified rel err 5.230695e-34 (2.72 eps128)
-# extended-precision source sha256: 0183a353762b36abb5ec714e16c216efcb353108648aec78c62609ce9d812790
-# generated: 2026-09-19T21:16:48 by make_publish.jl
+# extended-precision source sha256: 48782bae466a71e13aef7d3f3dad5adefc10d586de76fcf1ad8ba8db19262ab5
+# generated: 2026-09-20T17:26:38 by make_publish.jl
 # columns: x1,x2,x3,w
 x1,x2,x3,w
 1.9959579300798171,3.715642746696158,-5.233914362162659,5.349581181301496e-11

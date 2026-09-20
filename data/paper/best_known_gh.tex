@@ -4,82 +4,82 @@
 \centering
 \setlength{\tabcolsep}{3.5pt}
 \small
-\begin{tabular}[t]{rrrrrrc}
+\begin{tabular}[t]{rrrrrrrc}
 \toprule
-$p$ & $N$ & $\rho$ & rel.\ err. & M\"o & prev & src \\
+$p$ & $N$ & $\rho$ & rel.\ err. & M\"o & sym & prev & src \\
 \midrule
-\multicolumn{7}{@{}l}{$d = 2$} \\
-\rowcolor{gray!40}1 & 1 & 1.00 & 0 & 1 & 1 & --- \\
-\rowcolor{gray!40}3 & 4 & 1.00 & 1.5e-16 & 4 & 4 & CO \\
-\rowcolor{gray!40}5 & 7 & 0.88 & 1.5e-16 & 7 & 7 & CO \\
-\rowcolor{gray!40}7 & 12 & 0.87 & 2.4e-16 & 12 & 12 & CO \\
-\rowcolor{gray!15}9 & 18 & 0.85 & 3.8e-16 & 17 & 18 & HP \\
-\rowcolor{gray!15}11 & 25 & 0.83 & 4.0e-16 & 24 & 25 & HP \\
-\rowcolor{gray!15}13 & 34 & 0.83 & 6.2e-16 & 31 & 34 & CH \\
-\rowcolor{gray!15}15 & 44 & 0.83 & 6.5e-16 & 40 & 44 & CO \\
-17 & 55 & 0.82 & 8.7e-16 & 49 & 57 & SC \\
-19 & 68 & 0.82 & 4.8e-16 & 60 & 71 & CO \\
-21 & 82 & 0.82 & 7.0e-16 & 71 & 90 & CO \\
-\rowcolor{gray!15}23 & 97 & 0.82 & 6.6e-16 & 84 & 97 & CO \\
-25 & 114 & 0.82 & 8.8e-16 & 97 & 127 & CO \\
-27 & 132 & 0.82 & 9.8e-16 & 112 & --- & --- \\
-29 & 153 & 0.82 & 1.1e-15 & 127 & --- & --- \\
-31 & 178 & 0.83 & 5.0e-16 & 144 & --- & --- \\
-33 & 208 & 0.85 & 1.1e-15 & 161 & --- & --- \\
+\multicolumn{8}{@{}l}{$d = 2$} \\
+\rowcolor{gray!40}1 & 1 & 1.00 & 0 & 1 & 1 & 1 & --- \\
+\rowcolor{gray!40}3 & 4 & 1.00 & 3.6e-70 & 4 & 4 & 4 & CO \\
+\rowcolor{gray!40}5 & 7 & 0.88 & 2.7e-69 & 7 & 7 & 7 & CO \\
+\rowcolor{gray!40}7 & 12 & 0.87 & 1.2e-69 & 12 & 12 & 12 & CO \\
+\rowcolor{gray!15}9 & 18 & 0.85 & 6.8e-69 & 17 & 17 & 18 & HP \\
+\rowcolor{gray!15}11 & 25 & 0.83 & 1.1e-79 & 24 & 25 & 25 & HP \\
+\rowcolor{gray!15}13 & 34 & 0.83 & 8.9e-80 & 31 & 33 & 34 & CH \\
+\rowcolor{gray!15}15 & 44 & 0.83 & 1.3e-79 & 40 & 44 & 44 & CO \\
+17 & 55 & 0.82 & 6.4e-79 & 49 & 55 & 57 & SC \\
+19 & 68 & 0.82 & 6.8e-78 & 60 & 68 & 71 & CO \\
+21 & 82 & 0.82 & 3.0e-77 & 71 & 81 & 90 & CO \\
+\rowcolor{gray!15}23 & 97 & 0.82 & 8.7e-74 & 84 & 97 & 97 & CO \\
+25 & 114 & 0.82 & 6.5e-71 & 97 & 113 & 127 & CO \\
+27 & 132 & 0.82 & 1.1e-69 & 112 & 132 & --- & --- \\
+29 & 153 & 0.82 & 5.0e-78 & 127 & 151 & --- & --- \\
+31 & 178 & 0.83 & 7.9e-69 & 144 & 172 & --- & --- \\
+33 & 208 & 0.85 & 7.2e-69 & 161 & 193 & --- & --- \\
 \midrule
-\multicolumn{7}{@{}l}{$d = 3$} \\
-\rowcolor{gray!40}1 & 1 & 1.00 & 0 & 1 & 1 & --- \\
-\rowcolor{gray!40}3 & 6 & 0.91 & 1.9e-17 & 6 & 6 & CO \\
-\rowcolor{gray!40}5 & 13 & 0.78 & 8.8e-17 & 13 & 13 & ST \\
-\rowcolor{gray!15}7 & 27 & 0.75 & 6.5e-16 & 26 & 27 & CO \\
-\rowcolor{gray!15}9 & 45 & 0.71 & 3.0e-16 & 43 & 45 & KO \\
-\rowcolor{gray!15}11 & 77 & 0.71 & 8.4e-16 & 68 & 77 & CO \\
-13 & 128 & 0.72 & 3.9e-16 & 99 & 137 & CO \\
-15 & 184 & 0.71 & 4.6e-16 & 140 & --- & --- \\
-17 & 264 & 0.71 & 7.1e-16 & 189 & --- & --- \\
-19 & 354 & 0.71 & 7.5e-16 & 250 & --- & --- \\
-21 & 476 & 0.71 & 5.5e-16 & 321 & --- & --- \\
-23 & 597 & 0.70 & 5.5e-16 & 406 & --- & --- \\
-25 & 776 & 0.71 & 4.9e-16 & 503 & --- & --- \\
-27 & 966 & 0.71 & 7.4e-16 & 616 & --- & --- \\
-29 & 1242 & 0.72 & 3.9e-16 & 743 & --- & --- \\
-31 & 1848 & 0.77 & 4.9e-16 & 888 & --- & --- \\
-33 & 2226 & 0.77 & 5.2e-16 & 1049 & --- & --- \\
+\multicolumn{8}{@{}l}{$d = 3$} \\
+\rowcolor{gray!40}1 & 1 & 1.00 & 0 & 1 & 1 & 1 & --- \\
+\rowcolor{gray!40}3 & 6 & 0.91 & 5.4e-71 & 6 & 6 & 6 & CO \\
+\rowcolor{gray!40}5 & 13 & 0.78 & 1.1e-69 & 13 & 13 & 13 & ST \\
+\rowcolor{gray!15}7 & 27 & 0.75 & 6.0e-69 & 26 & 27 & 27 & CO \\
+\rowcolor{gray!15}9 & 45 & 0.71 & 9.3e-69 & 43 & 45 & 45 & KO \\
+\rowcolor{gray!15}11 & 77 & 0.71 & 1.0e-79 & 68 & 77 & 77 & CO \\
+13 & 128 & 0.72 & 6.3e-80 & 99 & 119 & 137 & CO \\
+15 & 184 & 0.71 & 5.2e-79 & 140 & 175 & --- & --- \\
+17 & 264 & 0.71 & 2.6e-78 & 189 & 248 & --- & --- \\
+19 & 354 & 0.71 & 1.4e-69 & 250 & 342 & --- & --- \\
+21 & 476 & 0.71 & 1.8e-71 & 321 & 447 & --- & --- \\
+23 & 597 & 0.70 & 3.0e-72 & 406 & 563 & --- & --- \\
+25 & 776 & 0.71 & 5.1e-73 & 503 & 720 & --- & --- \\
+27 & 966 & 0.71 & 2.6e-71 & 616 & 894 & --- & --- \\
+29 & 1242 & 0.72 & 6.3e-72 & 743 & 1094 & --- & --- \\
+31 & 1848 & 0.77 & 2.1e-71 & 888 & 1328 & --- & --- \\
+33 & 2226 & 0.77 & 1.1e-69 & 1049 & 1588 & --- & --- \\
 \bottomrule
 \end{tabular}
 \hfill
-\begin{tabular}[t]{rrrrrrc}
+\begin{tabular}[t]{rrrrrrrc}
 \toprule
-$p$ & $N$ & $\rho$ & rel.\ err. & M\"o & prev & src \\
+$p$ & $N$ & $\rho$ & rel.\ err. & M\"o & sym & prev & src \\
 \midrule
-\multicolumn{7}{@{}l}{$d = 4$} \\
-\rowcolor{gray!40}1 & 1 & 1.00 & 0 & 1 & 1 & --- \\
-\rowcolor{gray!40}3 & 8 & 0.84 & 7.7e-17 & 8 & 8 & CO \\
-\rowcolor{gray!15}5 & 22 & 0.72 & 2.0e-16 & 21 & 22 & CO \\
-\rowcolor{gray!15}7 & 49 & 0.66 & 4.5e-16 & 48 & 49 & CO \\
-9 & 116 & 0.66 & 3.5e-16 & 91 & --- & --- \\
-11 & 193 & 0.62 & 4.9e-16 & 160 & --- & --- \\
-13 & 414 & 0.64 & 2.9e-16 & 259 & --- & --- \\
-15 & 577 & 0.61 & 5.0e-16 & 400 & --- & --- \\
-17 & 1056 & 0.63 & 3.3e-16 & 589 & --- & --- \\
-19 & 1505 & 0.62 & 5.5e-16 & 840 & --- & --- \\
-21 & 2318 & 0.63 & 4.7e-16 & 1161 & --- & --- \\
-23 & 3238 & 0.63 & 3.5e-16 & 1568 & --- & --- \\
+\multicolumn{8}{@{}l}{$d = 4$} \\
+\rowcolor{gray!40}1 & 1 & 1.00 & 0 & 1 & 1 & 1 & --- \\
+\rowcolor{gray!40}3 & 8 & 0.84 & 6.6e-70 & 8 & 8 & 8 & CO \\
+\rowcolor{gray!15}5 & 22 & 0.72 & 1.8e-69 & 21 & 22 & 22 & CO \\
+\rowcolor{gray!15}7 & 49 & 0.66 & 7.2e-69 & 48 & 49 & 49 & CO \\
+9 & 116 & 0.66 & 7.7e-80 & 91 & 105 & --- & --- \\
+11 & 193 & 0.62 & 8.3e-80 & 160 & 192 & --- & --- \\
+13 & 414 & 0.64 & 6.7e-80 & 259 & 353 & --- & --- \\
+15 & 577 & 0.61 & 7.2e-80 & 400 & 529 & --- & --- \\
+17 & 1056 & 0.63 & 1.1e-77 & 589 & 856 & --- & --- \\
+19 & 1505 & 0.62 & 1.5e-79 & 840 & 1281 & --- & --- \\
+21 & 2318 & 0.63 & 1.9e-69 & 1161 & 1809 & --- & --- \\
+23 & 3238 & 0.63 & 1.3e-71 & 1568 & 2512 & --- & --- \\
 \midrule
-\multicolumn{7}{@{}l}{$d = 5$} \\
-\rowcolor{gray!40}1 & 1 & 1.00 & 0 & 1 & 1 & --- \\
-\rowcolor{gray!40}3 & 10 & 0.79 & 1.5e-16 & 10 & 10 & CO \\
-\rowcolor{gray!15}5 & 32 & 0.67 & 8.5e-17 & 31 & 32 & SS \\
-\rowcolor{gray!15}7 & 83 & 0.61 & 2.1e-16 & 80 & 83 & ST \\
-9 & 244 & 0.60 & 2.6e-16 & 171 & 395 & AD \\
-11 & 485 & 0.57 & 3.1e-16 & 332 & --- & --- \\
-13 & 1135 & 0.58 & 2.5e-16 & 591 & --- & --- \\
-15 & 1767 & 0.56 & 3.1e-16 & 992 & --- & --- \\
-17 & 3986 & 0.58 & 3.1e-16 & 1581 & --- & --- \\
-19 & 7174 & 0.59 & 8.4e-16 & 2422 & --- & --- \\
-21 & 13199 & 0.61 & 5.4e-16 & 3583 & --- & --- \\
+\multicolumn{8}{@{}l}{$d = 5$} \\
+\rowcolor{gray!40}1 & 1 & 1.00 & 0 & 1 & 1 & 1 & --- \\
+\rowcolor{gray!40}3 & 10 & 0.79 & 2.2e-70 & 10 & 10 & 10 & CO \\
+\rowcolor{gray!15}5 & 32 & 0.67 & 2.1e-69 & 31 & 32 & 32 & SS \\
+\rowcolor{gray!15}7 & 83 & 0.61 & 8.2e-80 & 80 & 83 & 83 & ST \\
+9 & 244 & 0.60 & 5.4e-80 & 171 & 212 & 395 & AD \\
+11 & 485 & 0.57 & 9.7e-80 & 332 & 445 & --- & --- \\
+13 & 1135 & 0.58 & 1.9e-79 & 591 & 846 & --- & --- \\
+15 & 1767 & 0.56 & 5.5e-80 & 992 & 1496 & --- & --- \\
+17 & 3986 & 0.58 & 1.4e-79 & 1581 & 2448 & --- & --- \\
+19 & 7174 & 0.59 & 3.0e-79 & 2422 & 3978 & --- & --- \\
+21 & 13199 & 0.61 & 9.8e-80 & 3583 & 6290 & --- & --- \\
 \bottomrule
 \end{tabular}
 \normalsize
-\caption{Positive-weight rules for the Gaussian weight $N(0, I_d)$. $N$: nodes in our best rule; $\rho = N^{1/d}/q$ with $q = (p+1)/2$ ($\rho = 1$ is the Gauss product grid, smaller is better); rel.\ err.: largest relative monomial error of our rule, $\max_{|a| \le p} |\sum_s w_s x_s^a - \mathrm{E}\,x^a| / \max(\sum_s |w_s|\,|x_s^a|, 1)$, in 192-bit arithmetic; M\"o: M\"oller's lower bound; prev: best count in the literature, --- where none exists besides the product grid; src: where that count was first published (AD = Adurthi et al.\ 2012; CH = Cools and Haegemans 1988; CO = Cools' Encyclopaedia of Cubature Formulas; HP = Haegemans and Piessens 1976/77; KO = Konyaev 1977; SC = Schiff (web collection); SS = Stroud and Secrest 1963; ST = Stroud 1971). Light gray: no improvement on prev; dark gray: M\"oller's bound attained (proven minimal).}\label{tab:best-gh}
+\caption{Positive-weight rules for the Gaussian weight $N(0, I_d)$. $N$: nodes in our best rule; $\rho = N^{1/d}/q$ with $q = (p+1)/2$ ($\rho = 1$ is the Gauss product grid, smaller is better); rel.\ err.: largest relative monomial error, $\max_{|a| \le p} |\sum_s w_s x_s^a - \mathrm{E}\,x^a| / \max(\sum_s w_s\,|x_s^a|, 1)$, of the rule's 80-digit file (rounded to double precision: at most $1.1\cdot 10^{-15}$); M\"o: M\"oller's lower bound; sym: the symmetric counting floor, the fewest nodes for which a rule invariant under a group $G$ has as many unknowns as it has $G$-invariant moment conditions, overall and among the conditions that only some orbit types see, minimized over the orbit types and over $G$ (no symmetry, $\pm$pairs, a sign change in each coordinate, the symmetry group $B_d$ of the cube and, for $d = 2$, the dihedral and cyclic groups), not counting the $d(d-1)/2$ unknowns that only rotate the rule where $G$ commutes with rotations --- a parameter count, not a proven bound; prev: best count in the literature, --- where none exists besides the product grid; src: where that count is recorded --- the original paper where I could identify it, otherwise a compilation (AD = \citealt{adurthi12}; CH = \citealt{coolio88b}; CO = \citealt{coolio}; HP = \citealt{haggy76,haggy77}; KO = \citealt{konyaev77}; SC = \citealt{degani05}; SS = \citealt{stroud63}; ST = \citealt{stroud71}). Light gray: no improvement on prev; dark gray: M\"oller's bound attained (proven minimal).}\label{tab:best-gh}
 \end{table}

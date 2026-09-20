@@ -1,7 +1,30 @@
 const GATE = 1e-11                                   # the paper's acceptance threshold
-const EXT_TARGET = Dict("gh" => 1e-34, "le" => 1e-68)  # targets of the extended-precision files
+const EXT_TARGET = Dict("gh" => 1e-68, "le" => 1e-68)  # targets of the extended-precision files (both weights ship 80 digits)
 const EPS128 = 2.0^-112                              # machine epsilon of IEEE binary128 (Float128), 1.93e-34
 const F128_BOUND = 10 * EPS128                       # an extended-precision file rounded to binary128 must be this exact
+
+"""
+    recorded_extended(family; dir = datadir()) -> Dict{(d, p, N) => error}
+
+The error of each rule's extended-precision file as the deposit records it (`err_extended` in
+`data/<family>/summary.csv`).  The "rel. err." column of the paper's tables is that error, and
+the extended-precision files are not part of this package (they are in the Zenodo deposits), so
+a table row is rebuilt from the recorded figure; `replicate(extended = …)` recomputes it from
+the file and requires the two to agree.
+"""
+function recorded_extended(fam::AbstractString; dir::AbstractString = datadir())
+    out = Dict{Tuple{Int,Int,Int},Float64}()
+    f = joinpath(dir, fam, "summary.csv"); isfile(f) || return out
+    L = readlines(f); h = split(L[1], ","); i = findfirst(==("err_extended"), h)
+    i === nothing && return out
+    back = length(h) - i                       # counted from the end: earlier quoted fields hold commas
+    for l in L[2:end]
+        m = match(r"^\w+,(\d+),(\d+),\d+,(\d+),", l); m === nothing && continue
+        e = tryparse(Float64, split(l, ",")[end-back]); e === nothing && continue
+        out[(parse(Int, m[1]), parse(Int, m[2]), parse(Int, m[3]))] = e
+    end
+    out
+end
 
 """
     CellResult
@@ -34,10 +57,13 @@ Every check the replication makes on one double-precision rule:
    error, in `precision`-bit arithmetic on the double-precision numbers, is below the paper's
    gate `1e-11`, and equals the error the deposit's header claims;
 5. the row of the paper's table — `N`, `ρ`, the error, Möller's bound, the shading — is
-   reproduced character for character.
+   reproduced character for character.  The error in that column is the one of the rule's
+   extended-precision file, taken here from the deposit's record ([`recorded_extended`](@ref));
+   `replicate(extended = …)` recomputes it from the file itself.
 """
 function check_cell(c::Cell; precision::Int = 192, dir::AbstractString = datadir(),
-                    rows = paper_rows(c.family; dir), sums = checksums(c.family; dir))
+                    rows = paper_rows(c.family; dir), sums = checksums(c.family; dir),
+                    recorded = recorded_extended(c.family; dir))
     t0 = time(); problems = String[]
     rel = "rules/" * basename(c.file)
     haskey(sums, rel) ? (sums[rel] == sha256file(c.file) || push!(problems, "sha256 differs from the deposit's SHA256SUMS")) :
@@ -53,7 +79,10 @@ function check_cell(c::Cell; precision::Int = 192, dir::AbstractString = datadir
     claimed === nothing || isapprox(claimed, v.err; rtol = 1e-5, atol = 1e-300) ||
         push!(problems, @sprintf("verified error %.6e, the file's header claims %.6e", v.err, claimed))
     pr = get(rows, (c.d, c.p), nothing)
-    row = table_row(c, v.err, pr === nothing ? nothing : pr.prev, pr === nothing ? "---" : pr.src)
+    terr = get(recorded, (c.d, c.p, c.n), nothing)
+    terr === nothing && push!(problems, "the deposit records no extended-precision error for this cell; the table row is built from the double-precision error")
+    row = table_row(c, something(terr, v.err), pr === nothing ? nothing : pr.prev, pr === nothing ? "---" : pr.src;
+                    symfloor = pr === nothing || c.family ≠ "gh" ? nothing : pr.pair)
     paper = pr === nothing ? nothing : paper_row_tex(pr)
     if pr === nothing
         push!(problems, "cell is not in the paper's table")
@@ -69,7 +98,7 @@ end
 
 Checks on an extended-precision file of the deposits (`rules_extended/*.mp.csv`): weights
 positive, nodes inside the cube for the uniform weight, exact to the target of its family
-(`1e-34` Gaussian, `1e-68` uniform) in arithmetic wide enough for its digits, and — the link
+(`1e-68` for both weights) in arithmetic wide enough for its digits, and — the link
 between the two files of a cell — rounding it to double precision gives the double-precision
 file, row for row and bit for bit.
 """
@@ -149,16 +178,20 @@ function replicate(; families = ("gh", "le"), maxnodes::Int = typemax(Int), exte
                    verbose::Bool = true, dir::AbstractString = datadir())
     results = CellResult[]
     for fam in families
-        rows = paper_rows(fam; dir); sums = checksums(fam; dir)
+        rows = paper_rows(fam; dir); sums = checksums(fam; dir); recorded = recorded_extended(fam; dir)
         ext = Dict{Tuple{Int,Int},Cell}()
         extended === nothing || for e in cells(fam; dir = extended, sub = "rules_extended"); ext[(e.d, e.p)] = e; end
         for c in cells(fam; dir)
             c.n ≤ maxnodes || continue
-            r = check_cell(c; precision, dir, rows, sums)
+            r = check_cell(c; precision, dir, rows, sums, recorded)
             if haskey(ext, (c.d, c.p))
                 e = ext[(c.d, c.p)]
                 eerr, eprob = e.n == c.n ? check_extended(c, e.file) : (nothing, ["extended file is for N = $(e.n)"])
                 qerr, qprob = e.n == c.n ? check_float128(c, e.file) : (nothing, String[])
+                # the table's error column is this file's error: what the deposit records must be what the file measures
+                rec = get(recorded, (c.d, c.p, c.n), nothing)
+                eerr === nothing || rec === nothing || isapprox(eerr, rec; rtol = 1e-5, atol = 1e-300) ||
+                    push!(eprob, @sprintf("extended file measures %.6e, the deposit records %.6e (the paper's table prints the latter)", eerr, rec))
                 r = CellResult(r.cell, r.err, r.minw, r.sumwdev, r.row, r.paper, eerr, qerr, r.seconds, vcat(r.problems, eprob, qprob))
             end
             push!(results, r)

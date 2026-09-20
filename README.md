@@ -48,14 +48,16 @@ tables as given; the sources are listed in the paper's bibliography.
 
 ### The extended-precision files
 
-The Zenodo deposits also hold every rule to 40 digits (GH) or 80 digits (Le). Those files are
-not in this package (32 MB). With the two deposits unpacked side by side,
+The Zenodo deposits also hold every rule to 80 digits, for both weights. Those files are not in
+this package (53 MB). The "rel. err." column of the paper's tables is the error of these files, so
+without them a table row is rebuilt from the figure the deposit records (`err_extended` in
+`summary.csv`); with them, that figure is recomputed and must agree. With the two deposits unpacked side by side,
 
 ```julia
 replicate(extended = "/path/to/deposits")   # expects gh/rules_extended and le/rules_extended there
 ```
 
-additionally checks, for each such file, positivity, exactness to `1e-34` (GH) or `1e-68` (Le)
+additionally checks, for each such file, positivity, exactness to `1e-68`
 in arithmetic wide enough for its digits, and that rounding it to double precision gives the
 double-precision file row for row and bit for bit.  It also rounds each file to quadruple precision
 (IEEE binary128, `Float128`: every number correctly rounded to a 113-bit significand, as parsing

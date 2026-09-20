@@ -12,7 +12,7 @@
 # min weight: 9.4009162525500002e-07   max weight: 0.25529268131936594   (all weights positive)
 # node range: [-6.6331500016973557, 6.6331500016973557]   max |node| = 6.6331500016973557
 # source file: rules/hermite_d2_p9_n18.csv   (local tree: sync)
-# source sha256: 412dd07eb363b71ed754bdc507b315da4ce0217ff08cf3a5a0714e014a06513d
+# source sha256: cc96f18f0f651fa63ecb12300c9b8140f9a952c439026f334ce851504770238f
 # precision shipped: Float64 round-trip (17 significant digits)
 # credit: transcribed:Haegemans and Piessens 1977
 # credit note: the published rule itself, copied into the bank; not ours in any sense
@@ -26,11 +26,11 @@
 # tie vocabulary: same-rule:<source> | distinct:<source> (equal count, different node set) | unestablished:<source> | no-tie | no-published-count-on-record
 # extended precision: twin-shipped
 # Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
-# extended-precision twin: rules_extended/hermite_d2_p9_q5_n18.mp.csv (40 digits, verified rel err 1.009809e-39)
+# extended-precision twin: rules_extended/hermite_d2_p9_q5_n18.mp.csv (80 digits, verified rel err 6.771746e-69)
 # Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
 # the twin rounded to IEEE binary128 (Float128): verified rel err 2.434498e-34 (1.26 eps128)
-# extended-precision source sha256: 352e4d2dc3e4d45ebe25fec8525e6fecd908372c4d615e39878832694e0cf3ec
-# generated: 2026-09-19T21:16:47 by make_publish.jl
+# extended-precision source sha256: 79b17bb96cced48e6a6ba019cb1efbfc368d6561e94abbd377ee659fc6da0b24
+# generated: 2026-09-20T17:26:37 by make_publish.jl
 # columns: x1,x2,w
 x1,x2,w
 2.852484144152666,0.9386950168379756,0.005673685828281279
@@ -45,9 +45,9 @@ x1,x2,w
 -4.329399359783691,-6.633150001697356,9.40091625255e-7
 4.329399359783691,-6.633150001697356,9.40091625255e-7
 -4.329399359783691,6.633150001697356,9.40091625255e-7
-1.3369588790906302,-2.2986451767774563e-32,0.15649404094802905
--1.3369588790906302,2.2986451767774563e-32,0.15649404094802905
-1.6215483296082456e-32,0.8651238873612098,0.25529268131936594
--1.6215483296082456e-32,-0.8651238873612098,0.25529268131936594
-4.936083341300407e-32,2.7706754719307134,0.010916194409173177
--4.936083341300407e-32,-2.7706754719307134,0.010916194409173177
+1.3369588790906302,-2.2986451773087433e-32,0.15649404094802905
+-1.3369588790906302,2.2986451773087433e-32,0.15649404094802905
+1.621548329857406e-32,0.8651238873612098,0.25529268131936594
+-1.621548329857406e-32,-0.8651238873612098,0.25529268131936594
+4.936083342279651e-32,2.7706754719307134,0.010916194409173177
+-4.936083342279651e-32,-2.7706754719307134,0.010916194409173177
