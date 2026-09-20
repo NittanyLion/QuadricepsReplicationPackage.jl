@@ -19,6 +19,21 @@ const QRP = QuadricepsReplicationPackage
         end
     end
 
+    @testset "the pair floor" begin
+        # 2⌈M/(d+1)⌉ by hand at d = 3, p = 21: M = 946 even-degree monomials, 4 unknowns per pair
+        @test pair_floor(3, 21) == 474
+        @test pair_floor(5, 21) == 9820
+        @test pair_floor(2, 1) == 1
+        @test_throws ArgumentError pair_floor(3, 4)
+        # the column is the uniform-weight table's, and no rule there is below it (the Gaussian
+        # rules carry more symmetry and several are, which is why that table has no such column)
+        for (k, r) in paper_rows("le")
+            @test r.pair == pair_floor(k...)
+            @test r.N ≥ r.pair
+        end
+        @test all(r.pair === nothing for (_, r) in paper_rows("gh"))
+    end
+
     @testset "verification kernel" begin
         # the 2-point Gauss rules, exact to degree 3, in one and two dimensions
         b(x) = BigFloat(x; precision = 192)
