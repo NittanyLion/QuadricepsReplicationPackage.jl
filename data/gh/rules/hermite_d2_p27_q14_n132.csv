@@ -30,7 +30,7 @@
 # Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
 # the twin rounded to IEEE binary128 (Float128): verified rel err 7.214823e-34 (3.75 eps128)
 # extended-precision source sha256: 5f75baebfaac8236dde022a3125028a6ebc1146a7261f88eb52f44accaba0e6d
-# generated: 2026-09-20T17:26:37 by make_publish.jl
+# generated: 2026-09-20T18:02:36 by make_publish.jl
 # columns: x1,x2,w
 x1,x2,w
 -0.10664334867101365,0.9100735242863125,0.07754183019314409
