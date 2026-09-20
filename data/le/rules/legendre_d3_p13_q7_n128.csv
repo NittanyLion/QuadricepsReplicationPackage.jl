@@ -28,8 +28,9 @@
 # Float64 file origin: round-down of the extended twin (row order shared with rules_extended/); the source file above is the bank file the twin was refined from
 # extended-precision twin: rules_extended/legendre_d3_p13_q7_n128.mp.csv (80 digits, verified rel err 5.658825e-74)
 # Float64 file: round-down of the extended twin (row order shared): row i here is row i of the twin rounded to Float64
+# the twin rounded to IEEE binary128 (Float128): verified rel err 4.701977e-36 (0.02 eps128)
 # extended-precision source sha256: 1da73e445e39724c5c46bedcdcb90ba5ed6ec28ae643436c109544ec95751f08
-# generated: 2026-09-19T14:47:24 by make_publish.jl
+# generated: 2026-09-19T21:20:01 by make_publish.jl
 # columns: x1,x2,x3,w
 x1,x2,x3,w
 0.22126589692565365,0.4594758773670156,0.4745710001503519,0.021777345588744574

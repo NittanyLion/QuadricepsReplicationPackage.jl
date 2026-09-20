@@ -57,7 +57,11 @@ replicate(extended = "/path/to/deposits")   # expects gh/rules_extended and le/r
 
 additionally checks, for each such file, positivity, exactness to `1e-34` (GH) or `1e-68` (Le)
 in arithmetic wide enough for its digits, and that rounding it to double precision gives the
-double-precision file row for row and bit for bit.
+double-precision file row for row and bit for bit.  It also rounds each file to quadruple precision
+(IEEE binary128, `Float128`: every number correctly rounded to a 113-bit significand, as parsing
+the file into a `Float128` does) and checks that the rounded rule has positive weights, is exact to
+10 machine epsilons (`2^-112 ≈ 1.93e-34`) and measures what the file's header claims.  The largest
+such error is 4.5 machine epsilons for GH and 0.17 for Le, the same multiples as in double precision.
 
 ## What is not replicated
 
@@ -77,6 +81,7 @@ checking, are in Quadriceps.jl.
 | `replicated(results)` | `true` when every cell passed |
 | `check_cell(cell)` | the checks on one double-precision rule |
 | `check_extended(cell, file)` | the checks on one extended-precision file |
+| `check_float128(cell, file)` | the same file rounded to IEEE binary128 (`Float128`) |
 | `verify_rule(nodes, weights, p, family; precision)` | largest relative monomial error, weight and node diagnostics |
 | `moller_bound(d, p)` | Möller's lower bound on the number of nodes |
 | `rho(N, d, p)` | the tables' quality measure |

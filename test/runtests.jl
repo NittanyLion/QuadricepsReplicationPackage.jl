@@ -91,6 +91,10 @@ const QRP = QuadricepsReplicationPackage
             err, problems = check_extended(c, e.file)
             @test isempty(problems)
             @test err ≤ (e.family == "gh" ? 1e-34 : 1e-68)
+            err128, problems128 = check_float128(c, e.file)     # the same file rounded to IEEE binary128
+            @test isempty(problems128)
+            @test err < err128 ≤ 10 * 2.0^-112
+            @test occursin("rounded to IEEE binary128", read(e.file, String))   # the deposit states the figure; check_float128 compared it
         end
         @test length(cells(; dir = ext, sub = "rules_extended")) == 2
     end

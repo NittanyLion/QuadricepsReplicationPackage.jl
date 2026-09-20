@@ -15,6 +15,7 @@
 # source sha256: f00a39474ffad1521527e385f34ecf053454eb159dd040046b969244e7827f9a
 # precision shipped: extended precision (40 significant digits)
 # Float64 companion: rules/hermite_d2_p5_q3_n7.csv (verified rel err 1.513103e-16)
+# rounded to IEEE binary128 (Float128, 113-bit significand): verified max relative monomial error 1.407772e-34 = 0.73 eps128 (eps128 = 2^-112); parse the text below at 36 or more digits
 # extended-precision source: rules_mp/hermite_d2_p5_n7.mp.csv
 # extended-precision source sha256: 99c4c60796bed7f09a74dc62dc94c0e61f99bda68b48807c0aab1424035873ac
 # twin/Float64 correspondence: the Float64 file rules/hermite_d2_p5_q3_n7.csv is this twin rounded to Float64, row for row
@@ -25,7 +26,7 @@
 #   polish: polish_mp.jl, residual x4, 2 Newton iterations, ±pair-reduced, poppyrose
 #   verified max relative monomial error (all degree ≤ 5, x4): 2.833e-46
 #   digits: 40  date: 2026-09-11T14:53:21
-# generated: 2026-09-19T14:44:20 by make_publish.jl
+# generated: 2026-09-19T21:16:47 by make_publish.jl
 # columns: x1,x2,w
 x1,x2,w
 -1.277634477101831669680344674226940160266e+00,-1.538717044462928267501259926294496469490e+00,8.333333333333333333333333333333333333333e-02

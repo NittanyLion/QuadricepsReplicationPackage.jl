@@ -15,6 +15,7 @@
 # source sha256: 3c3adf7309286158b54d64ccb4fb9f50dadb04ed33acf89659677da01e2b64dc
 # precision shipped: extended precision (80 significant digits)
 # Float64 companion: rules/legendre_d3_p5_q3_n13.csv (verified rel err 2.363498e-17)
+# rounded to IEEE binary128 (Float128, 113-bit significand): verified max relative monomial error 9.691222e-36 = 0.05 eps128 (eps128 = 2^-112); parse the text below at 36 or more digits
 # extended-precision source: rules_mp/legendre_d3_p5_n13.mp.csv
 # extended-precision source sha256: a5fdb873617b012f181fe558804ec2fff531973dde492aab5dfed642899f8929
 # twin/Float64 correspondence: the Float64 file rules/legendre_d3_p5_q3_n13.csv is this twin rounded to Float64, row for row
@@ -25,7 +26,7 @@
 #   polish: polish_mp.jl, residual big, 4 Newton iterations, ±pair-reduced, poppyrose
 #   verified max relative monomial error (all degree ≤ 5, big): 4.866e-76
 #   digits: 80  date: 2026-09-11T15:37:26
-# generated: 2026-09-19T14:47:24 by make_publish.jl
+# generated: 2026-09-19T21:20:01 by make_publish.jl
 # columns: x1,x2,x3,w
 x1,x2,x3,w
 6.4889252675957503143914972509067882323876854537665200134879046880054648401708720e-01,9.4578595957210769787656673912191541201789937357492848345114182391331746868102755e-01,8.0947142095869056359054683146161094779386075587885945656344427298002894312382130e-01,6.4277297063686377695297829625097937621276834771692271693072242080730411951863520e-02

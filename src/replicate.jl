@@ -1,5 +1,7 @@
 const GATE = 1e-11                                   # the paper's acceptance threshold
 const EXT_TARGET = Dict("gh" => 1e-34, "le" => 1e-68)  # targets of the extended-precision files
+const EPS128 = 2.0^-112                              # machine epsilon of IEEE binary128 (Float128), 1.93e-34
+const F128_BOUND = 10 * EPS128                       # an extended-precision file rounded to binary128 must be this exact
 
 """
     CellResult
@@ -14,6 +16,7 @@ struct CellResult
     row::String
     paper::Union{String,Nothing}
     err_extended::Union{Float64,Nothing}
+    err_float128::Union{Float64,Nothing}
     seconds::Float64
     problems::Vector{String}
 end
@@ -58,7 +61,7 @@ function check_cell(c::Cell; precision::Int = 192, dir::AbstractString = datadir
         paper == row || push!(problems, "table row differs: computed `$row`, paper `$paper`")
         pr.prev !== nothing && pr.shade == "" && c.n ≥ pr.prev && push!(problems, "shown as an improvement, but N ≥ prev")
     end
-    CellResult(c, v.err, v.minw, v.sumwdev, row, paper, nothing, time() - t0, problems)
+    CellResult(c, v.err, v.minw, v.sumwdev, row, paper, nothing, nothing, time() - t0, problems)
 end
 
 """
@@ -87,6 +90,38 @@ function check_extended(c::Cell, extfile::AbstractString; float64file::AbstractS
 end
 
 """
+    check_float128(cell, extfile) -> (err, problems)
+
+The extended-precision file rounded to IEEE binary128 (`Float128`: 113-bit significand, machine
+epsilon `2^-112 ≈ 1.93e-34`).  Every number is read from its decimal string straight into a
+113-bit `BigFloat`, which MPFR rounds correctly, so the values are bit for bit those a program
+holds after parsing the file into `Float128`; no quadruple-precision package is needed.  The
+rounded rule must have positive weights and be exact over all monomials of degree at most `p` to
+`10` machine epsilons — a few epsilons is the floor of the format, as it is for the
+double-precision files — and the error must equal the one the file's header claims, where
+the header carries that line (deposits built from 2026-09-19 on).
+"""
+function check_float128(c::Cell, extfile::AbstractString)
+    problems = String[]
+    m = match(r"\((\d+) significant digits\)", something(header(extfile, "precision shipped"), ""))
+    prec = max(256, ceil(Int, ((m ≡ nothing ? 40 : parse(Int, m[1])) + 45) * 3.33))
+    X, w = load_rule(extfile; precision = 113)
+    X = BigFloat[BigFloat(x; precision = prec) for x ∈ X]; w = BigFloat[BigFloat(x; precision = prec) for x ∈ w]
+    v = verify_rule(X, w, c.p, FAMILY[c.family]; precision = prec)
+    v.minw > 0 || push!(problems, "Float128 rounding: a weight is not positive")
+    v.err ≤ F128_BOUND || push!(problems, @sprintf("Float128 rounding: error %.3e exceeds 10 machine epsilons (%.2e)", v.err, F128_BOUND))
+    claimed = nothing
+    for l ∈ eachline(extfile)
+        startswith(l, "#") || break
+        h = match(r"^# rounded to IEEE binary128[^:]*: verified max relative monomial error (\S+)", l)
+        h ≡ nothing || (claimed = parse(Float64, h[1]))
+    end
+    claimed ≡ nothing || isapprox(claimed, v.err; rtol = 1e-5, atol = 1e-300) ||
+        push!(problems, @sprintf("Float128 rounding: verified error %.6e, the file's header claims %.6e", v.err, claimed))
+    v.err, problems
+end
+
+"""
     replicate(; families = ("gh", "le"), maxnodes = typemax(Int), extended = nothing,
                 outdir = "replication_output", precision = 192, verbose = true) -> Vector{CellResult}
 
@@ -103,7 +138,8 @@ a character-for-character rebuild of the cell's row in the paper's table — and
 
 `extended` may name a directory that holds the two Zenodo deposits unpacked side by side
 (`<extended>/gh/rules_extended`, `<extended>/le/rules_extended`); each extended-precision file
-found there is then checked with `check_extended`.
+found there is then checked with `check_extended` and, rounded to quadruple precision, with
+`check_float128`.
 
 The full run takes minutes (most of it in the three largest `d = 5` cells) and uses all the
 threads Julia was started with.  `maxnodes = 500` is a quick pass over the small cells.
@@ -122,18 +158,20 @@ function replicate(; families = ("gh", "le"), maxnodes::Int = typemax(Int), exte
             if haskey(ext, (c.d, c.p))
                 e = ext[(c.d, c.p)]
                 eerr, eprob = e.n == c.n ? check_extended(c, e.file) : (nothing, ["extended file is for N = $(e.n)"])
-                r = CellResult(r.cell, r.err, r.minw, r.sumwdev, r.row, r.paper, eerr, r.seconds, vcat(r.problems, eprob))
+                qerr, qprob = e.n == c.n ? check_float128(c, e.file) : (nothing, String[])
+                r = CellResult(r.cell, r.err, r.minw, r.sumwdev, r.row, r.paper, eerr, qerr, r.seconds, vcat(r.problems, eprob, qprob))
             end
             push!(results, r)
             verbose && println(rpad(string(c), 24), @sprintf("err %.1e", r.err),
                                r.err_extended === nothing ? "" : @sprintf("  extended %.1e", r.err_extended),
+                               r.err_float128 ≡ nothing ? "" : @sprintf("  Float128 %.1e", r.err_float128),
                                isempty(r.problems) ? "  ok" : "  PROBLEM: " * join(r.problems, "; "),
                                @sprintf("  (%.1f s)", r.seconds))
         end
         # a cell of the paper's table with no rule behind it is a failure too
         have = Set((r.cell.d, r.cell.p) for r in results if r.cell.family == fam)
         maxnodes == typemax(Int) && for k in sort(collect(keys(rows)))
-            k ∈ have || push!(results, CellResult(Cell(fam, k[1], k[2], rows[k].N, ""), NaN, NaN, NaN, "", paper_row_tex(rows[k]), nothing, 0.0,
+            k ∈ have || push!(results, CellResult(Cell(fam, k[1], k[2], rows[k].N, ""), NaN, NaN, NaN, "", paper_row_tex(rows[k]), nothing, nothing, 0.0,
                                                   ["the paper's table has this cell, the data have no rule for it"]))
         end
     end
@@ -149,11 +187,12 @@ replicated(results::Vector{CellResult}) = !isempty(results) && all(r -> isempty(
 function write_report(results, outdir; families, maxnodes, extended, precision)
     mkpath(outdir)
     open(joinpath(outdir, "cells.csv"), "w") do io
-        println(io, "family,d,p,N,rho,moller_bound,rel_err_float64,rel_err_extended,min_weight,sum_weights_minus_1,seconds,problems")
+        println(io, "family,d,p,N,rho,moller_bound,rel_err_float64,rel_err_extended,rel_err_float128,min_weight,sum_weights_minus_1,seconds,problems")
         for r in results
             c = r.cell
             println(io, join((c.family, c.d, c.p, c.n, @sprintf("%.6f", rho(c.n, c.d, c.p)), moller_bound(c.d, c.p),
                               @sprintf("%.6e", r.err), r.err_extended === nothing ? "" : @sprintf("%.6e", r.err_extended),
+                              r.err_float128 ≡ nothing ? "" : @sprintf("%.6e", r.err_float128),
                               @sprintf("%.6e", r.minw), @sprintf("%.3e", r.sumwdev), @sprintf("%.1f", r.seconds),
                               "\"" * replace(join(r.problems, "; "), "\"" => "'") * "\""), ","))
         end
@@ -194,5 +233,7 @@ function write_report(results, outdir; families, maxnodes, extended, precision)
         println(io, "\nChecks per cell: file checksum; N and d; positive weights summing to 1; nodes inside the cube (uniform weight); ",
                 "relative error over all monomials of total degree ≤ p below 1e-11 and equal to the deposit's claim; ",
                 "the paper's table row rebuilt character for character.")
+        q = [r.err_float128 for r ∈ results if r.err_float128 ≢ nothing]
+        isempty(q) || println(io, @sprintf("\nExtended-precision files rounded to IEEE binary128 (Float128): largest error %.2e, that is %.2f machine epsilons (2^-112); the bound checked is 10.", maximum(q), maximum(q) / EPS128))
     end
 end
