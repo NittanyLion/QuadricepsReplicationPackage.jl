@@ -104,4 +104,30 @@ const QRP = QuadricepsReplicationPackage
         end
         @test length(cells(; dir = ext, sub = "rules_extended")) == 2
     end
+    @testset "figure data" begin
+        figs = normpath(joinpath(@__DIR__, "..", "figures"))
+        rows(f) = [split(l) for l in readlines(joinpath(figs, "fig", f))[2:end]]
+        # every data file a figure reads is there
+        for t in ("fig_nodes.tex", "fig_rho.tex"), m in eachmatch(r"\{(fig/[a-z0-9_]+\.dat)\}", read(joinpath(figs, t), String))
+            @test isfile(joinpath(figs, m[1]))
+        end
+        # Figure 2 is the tables: ρ, the counting floor and Möller's bound, per axis, row for row
+        for fam in ("gh", "le"), d in 2:5
+            R = paper_rows(fam); got = rows("rho_$(fam)_d$d.dat")
+            @test [parse(Int, r[1]) for r in got] == sort([p for (dd, p) in keys(R) if dd == d])
+            for r in got
+                p = parse(Int, r[1]); row = R[(d, p)]; q = (p + 1) ÷ 2
+                @test isapprox(parse(Float64, r[2]), row.N^(1 / d) / q; atol = 1e-5)
+                @test isapprox(parse(Float64, r[3]), row.pair^(1 / d) / q; atol = 1e-5)
+                @test isapprox(parse(Float64, r[4]), moller_bound(d, p)^(1 / d) / q; atol = 1e-5)
+            end
+        end
+        # Figure 1 is the largest planar rule of each table
+        for (fam, d, p) in (("gh", 2, 33), ("le", 2, 77))
+            c = only(c for c in cells(fam) if (c.d, c.p) == (d, p)); x, w = load_rule64(c.file)
+            got = rows("nodes_$fam.dat")
+            @test length(got) == c.n
+            @test all(isapprox(parse(Float64, got[i][1]), Float64(x[i, 1]); atol = 1e-8) && isapprox(parse(Float64, got[i][3]), Float64(w[i]); rtol = 1e-6) for i in 1:c.n)
+        end
+    end
 end

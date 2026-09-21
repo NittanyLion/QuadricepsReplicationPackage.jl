@@ -7,7 +7,7 @@ Replication package for
 The paper's contribution is two tables of positive-weight quadrature rules of odd degree of
 exactness `p`, in `d = 2, …, 5` dimensions: 57 rules for the Gaussian weight `N(0, I_d)` (GH)
 and 85 for the uniform weight on `[0,1]^d` (Le). This package holds every one of those rules in
-double precision and rebuilds the tables from them.
+double precision, rebuilds the tables from them, and redraws the paper's two figures.
 
 ```julia
 using QuadricepsReplicationPackage
@@ -64,6 +64,28 @@ double-precision file row for row and bit for bit.  It also rounds each file to 
 the file into a `Float128` does) and checks that the rounded rule has positive weights, is exact to
 10 machine epsilons (`2^-112 ≈ 1.93e-34`) and measures what the file's header claims.  The largest
 such error is 4.5 machine epsilons for GH and 0.17 for Le, the same multiples as in double precision.
+
+## The figures
+
+`figures/` holds the paper's two figures: Figure 1 shows the nodes of the largest planar rule of each
+table, shaded by the logarithm of their weight, and Figure 2 shows ρ, the counting floor and Möller's
+bound against the degree.
+
+| | |
+|---|---|
+| `figdata.jl` | writes the data of both figures from `data/`; standard library only |
+| `fig/*.dat` | its output as the paper used it: what the figures are drawn from |
+| `fig_nodes.tex`, `fig_rho.tex`, `figstyle.tex` | the paper's Figures 1 and 2 (pgfplots) |
+| `figures.tex` | compiles the two figures on their own: `pdflatex figures` |
+
+```
+julia figures/figdata.jl
+```
+
+takes a second or two, writes to `replication_output/figures/`, and ends with `REPLICATED` when every
+figure data file agrees with `figures/fig/` (exit status 1 otherwise).  `Pkg.test()` checks that Figure 2
+is the tables (ρ, the counting floor and Möller's bound, row for row) and that Figure 1 is the two rule
+files it claims to show.
 
 ## What is not replicated
 

@@ -1,0 +1,16 @@
+% fig_nodes.tex — two planar rules; data from figdata.jl
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 1, horizontal sep=2.3cm}, quad, scale only axis, width=0.34\linewidth, height=0.34\linewidth,
+    grid=none, colormap={qblue}{color=(qd2!45) color=(qd3) color=(qd5)}, colorbar,
+    colorbar style={width=2mm, tick label style={font=\scriptsize}, title={$\log_{10} w$}, title style={font=\scriptsize}, axis line style={gray!60}}]
+  \nextgroupplot[title={normal, $p=33$, $N=208$}, xmin=-8.2, xmax=8.2, ymin=-8.2, ymax=8.2]
+    \addplot[scatter, only marks, mark=*, mark size=1.3pt, scatter src=explicit, mark options={draw=gray!70, line width=0.15pt}] table[x=x, y=y, meta=logw] {fig/nodes_gh.dat};
+  \nextgroupplot[title={uniform, $p=77$, $N=1032$}, xmin=0, xmax=1, ymin=0, ymax=1]
+    \addplot[scatter, only marks, mark=*, mark size=0.9pt, scatter src=explicit, mark options={draw=gray!70, line width=0.1pt}] table[x=x, y=y, meta=logw] {fig/nodes_le.dat};
+\end{groupplot}
+\end{tikzpicture}
+\caption{The largest planar rule of each table: nodes, shaded by the logarithm of their weight.}
+\label{fig:nodes}
+\end{figure}

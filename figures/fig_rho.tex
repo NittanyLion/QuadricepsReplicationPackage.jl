@@ -1,0 +1,31 @@
+% fig_rho.tex — ρ against p, with the counting floor on the same scale; data from figdata.jl (read off the tables)
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 1, horizontal sep=1.2cm}, quad, width=0.5\linewidth, height=0.4\linewidth,
+    ymin=0.5, ymax=0.92, xmin=5, xlabel={degree $p$}, restrict x to domain=5:99]
+  \nextgroupplot[title={normal}, ylabel={$\rho$}, ylabel style={rotate=-90, font=\normalsize}, xmax=38.5]
+    \addplot[qd2, line width=0.9pt, mark=*, mark size=1pt] table[x=p, y=rho] {fig/rho_gh_d2.dat};
+    \addplot[qd2, line width=0.6pt, densely dashed] table[x=p, y=floor] {fig/rho_gh_d2.dat};
+    \pgfplotsinvokeforeach{3,4,5}{
+      \addplot[qd#1, line width=0.9pt, mark=*, mark size=1pt, forget plot] table[x=p, y=rho] {fig/rho_gh_d#1.dat};
+      \addplot[qd#1, line width=0.6pt, densely dashed, forget plot] table[x=p, y=floor] {fig/rho_gh_d#1.dat};
+    }
+    \node[anchor=west, font=\scriptsize] at (axis cs:33.4,0.852) {$d=2$};
+    \node[anchor=west, font=\scriptsize] at (axis cs:33.4,0.765) {$d=3$};
+    \node[anchor=west, font=\scriptsize] at (axis cs:23.4,0.632) {$d=4$};
+    \node[anchor=west, font=\scriptsize] at (axis cs:21.4,0.598) {$d=5$};
+  \nextgroupplot[title={uniform}, xmax=93]
+    \pgfplotsinvokeforeach{2,3,4,5}{
+      \addplot[qd#1, line width=0.9pt, mark=*, mark size=0.8pt] table[x=p, y=rho] {fig/rho_le_d#1.dat};
+      \addplot[qd#1, line width=0.6pt, densely dashed] table[x=p, y=floor] {fig/rho_le_d#1.dat};
+    }
+    \node[anchor=west, font=\scriptsize] at (axis cs:77.5,0.824) {$d=2$};
+    \node[anchor=west, font=\scriptsize] at (axis cs:45.5,0.712) {$d=3$};
+    \node[anchor=west, font=\scriptsize] at (axis cs:23.5,0.632) {$d=4$};
+    \node[anchor=west, font=\scriptsize] at (axis cs:21.5,0.578) {$d=5$};
+\end{groupplot}
+\end{tikzpicture}
+\caption{The node count of each rule in \cref{tab:best-gh,tab:best-le} as a fraction of the Gauss product grid's, per axis: $\rho = N^{1/d}/q$ with $q = (p+1)/2$, so that $\rho = 1$ is the product grid (solid, one marker per rule), and the counting floor of the tables' fourth column on the same scale (dashed).}
+\label{fig:rho}
+\end{figure}

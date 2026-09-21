@@ -1,0 +1,18 @@
+% figures.tex — the paper's two figures on their own:   pdflatex figures
+% Reads fig/*.dat next to this file (the reference output of figdata.jl).  To draw them from a rerun
+% instead, copy replication_output/figures/fig over fig/ first.
+% The figure sources are the paper's own files, so their captions cross-refer; the command below
+% stands in for the paper's table labels.
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor,caption}
+\captionsetup{font={footnotesize,it}}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.18}
+\input{figstyle}
+\newcommand\cref[1]{Tables 1 and 2}
+\begin{document}
+\input{fig_nodes}
+\input{fig_rho}
+\end{document}

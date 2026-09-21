@@ -1,0 +1,15 @@
+% figstyle.tex — shared pgfplots setup for the figures of quadriceps.tex (needs pgfplots + groupplots).
+% One blue per dimension, darker as d grows.  Data: fig/*.dat, written by figdata.jl.
+\definecolor{qd2}{HTML}{5598E7}
+\definecolor{qd3}{HTML}{2A78D6}
+\definecolor{qd4}{HTML}{1C5CAB}
+\definecolor{qd5}{HTML}{0D366B}
+\pgfplotsset{
+  quad/.style={
+    width=\linewidth, height=0.8\linewidth,
+    tick label style={font=\scriptsize}, label style={font=\footnotesize}, title style={font=\footnotesize, yshift=-1ex},
+    axis line style={gray!60}, tick style={gray!60}, tick align=outside, tickpos=left,
+    grid=major, major grid style={gray!18, line width=0.3pt},
+    legend style={font=\footnotesize, draw=none, fill=none, /tikz/every even column/.append style={column sep=1.2em}},
+  },
+}
