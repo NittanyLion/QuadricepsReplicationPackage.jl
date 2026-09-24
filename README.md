@@ -2,7 +2,7 @@
 
 Replication package for
 
-> J. Pinkse, *Positive weight Hermite and Legendre quadrature rules*, 2026, Zenodo, DOI [10.5281/zenodo.22904159](https://doi.org/10.5281/zenodo.22904159).
+> J. Pinkse, *Positive weight Hermite and Legendre quadrature rules*, 2026, [arXiv:2609.26840](https://arxiv.org/abs/2609.26840); Zenodo, DOI [10.5281/zenodo.22904159](https://doi.org/10.5281/zenodo.22904159).
 
 The rules themselves, to 80 digits, are deposited on Zenodo, DOI [10.5281/zenodo.22881864](https://doi.org/10.5281/zenodo.22881864). One record holds both deposits, `gh` and `le`.
 

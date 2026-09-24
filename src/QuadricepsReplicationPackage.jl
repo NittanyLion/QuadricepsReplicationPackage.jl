@@ -2,7 +2,7 @@
     QuadricepsReplicationPackage
 
 Replication package for J. Pinkse, *Positive weight Hermite and Legendre quadrature rules*
-(2026).  The paper's contribution is two tables of positive-weight quadrature rules, for the
+(2026), arXiv:2609.26840.  The paper's contribution is two tables of positive-weight quadrature rules, for the
 Gaussian weight ``N(0, I_d)`` and for the uniform weight on ``[0,1]^d``, in ``d = 2, …, 5``
 dimensions.  This package holds every rule of those tables in double precision and rebuilds
 the tables from them:
